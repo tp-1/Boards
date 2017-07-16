@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.i5.boards.ui.debugScreen.DebugScreenActivity"
+    tools:showIn="@layout/activity_debug_screen"
+    android:padding="@dimen/debug_screen_padding">
+
+    <Button
+        android:id="@+id/debug_db_manager_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/debug_database_manager_button"
+        android:layout_gravity="center_horizontal" />
+
+    <CheckBox
+        android:id="@+id/logFilterUICheckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/debug_ui_checkbox"
+        android:padding="@dimen/debug_checkbox_padding" />
+
+    <CheckBox
+        android:id="@+id/logFilterDataCheckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/debug_data_checkbox"
+        android:padding="@dimen/debug_checkbox_padding" />
+</LinearLayout>

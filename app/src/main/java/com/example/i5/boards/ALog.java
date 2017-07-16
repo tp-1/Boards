@@ -15,7 +15,7 @@ import android.util.Log;
  * https://zerocredibility.wordpress.com/2012/03/08/android-advanced-logger/
  */
 public class ALog {
-    /** Enable v logs. Keep final until adding to debug screen */
+    /** Enable verbose logs. Keep final until adding to debug screen */
     private final static boolean VERBOSE_LOGGING = true;
 
     // Filters
@@ -34,9 +34,35 @@ public class ALog {
      */
     private static int mFilter = ALL_FILTERS;
 
-    public static void setFilter(int filter) {
-        mFilter = filter;
-    };
+    /**
+     * Add additional filters to allow through,
+     * adding them to already set filters
+     */
+    public static void addFilter(int newFilters) {
+        mFilter |= newFilters;
+    }
+
+    /**
+     * Remove filters to allow through,
+     * removing them from already set filters
+     */
+    public static void removeFilter(int newFilters) {
+        mFilter &= ~newFilters;
+    }
+
+    /**
+     * Check if given filter is in the list of active filters
+     */
+    public static boolean isFilterEnabled(int filter) {
+        return (mFilter & filter) != 0;
+    }
+
+    /**
+     * @return All currently enabled filters
+     */
+    public static int getFilter() {
+        return mFilter;
+    }
 
     public static void v(String tag, String s, Object... args) {
         v(tag, DEFAULT_FILTER, s, args);

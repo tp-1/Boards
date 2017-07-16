@@ -16,4 +16,8 @@
     <string name="edit_issue_estimated_label">Estimated</string>
     <string name="edit_text_remaining_label">Remaining</string>
     <string name="board_fragment_tag">fragment_board</string>
+    <string name="title_activity_debug_screen">Debug screen</string>
+    <string name="debug_database_manager_button">Database manager</string>
+    <string name="debug_ui_checkbox">UI</string>
+    <string name="debug_data_checkbox">Data</string>
 </resources>

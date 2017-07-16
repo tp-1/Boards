@@ -22,6 +22,10 @@
         <activity android:name=".ui.newStory.NewStoryActivity" />
         <activity android:name=".ui.newBoard.NewBoardActivity" />
         <activity android:name=".data.db.AndroidDatabaseManager" />
+        <activity
+            android:name=".ui.debugScreen.DebugScreenActivity"
+            android:label="@string/title_activity_debug_screen"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

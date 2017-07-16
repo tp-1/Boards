@@ -9,4 +9,6 @@
 
     <dimen name="story_on_board_name_margin">@dimen/issue_on_board_padding</dimen>
     <dimen name="edit_issue_done_button_margin">10dp</dimen>
+    <dimen name="debug_screen_padding">20dp</dimen>
+    <dimen name="debug_checkbox_padding">5dp</dimen>
 </resources>

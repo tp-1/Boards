@@ -22,6 +22,7 @@ import com.example.i5.boards.data.Issue;
 import com.example.i5.boards.data.Story;
 import com.example.i5.boards.data.db.AndroidDatabaseManager;
 import com.example.i5.boards.data.db.TableInfos;
+import com.example.i5.boards.ui.debugScreen.DebugScreenActivity;
 import com.example.i5.boards.ui.newBoard.NewBoardActivity;
 import com.example.i5.boards.ui.newStory.NewStoryActivity;
 
@@ -131,13 +132,8 @@ public class NewIssueActivity extends AppCompatActivity {
     }
 
     /**
-     * Set up action needed to enter debug mode.
-     *<br/>
-     * So far, included in the debug mode:
-     * <ul>
-     * <li> Android Database Manager view </li>
-     * <li> Yep, that's it </li>
-     * </ul>
+     * Set up action needed to enter debug screen.
+     * @see com.example.i5.boards.ui.debugScreen.DebugScreenActivity
      */
     private void setUpDebugEntryPoint() {
         // Enter debug mode when user taps boardLabel a certain number of times
@@ -149,7 +145,7 @@ public class NewIssueActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (++numberOfClicks >= NUM_OF_CLICKS_FOR_DB_MANAGER) {
                     numberOfClicks = 0;
-                    Intent intent = AndroidDatabaseManager.getIntentToStart(NewIssueActivity.this);
+                    Intent intent = DebugScreenActivity.getIntentToStart(NewIssueActivity.this);
                     startActivity(intent);
                 }
             }
