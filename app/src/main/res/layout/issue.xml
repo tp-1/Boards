@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
+    android:layout_margin="@dimen/issue_on_board_margin"
+    android:padding="@dimen/issue_on_board_padding">
+    <!-- TODO change hardcoded height value -->
+    <TextView
+        android:id="@+id/issue_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        android:lines="@integer/issue_on_board_name_num_of_lines"
+        android:ellipsize="end" />
+
+    <TextView
+        android:id="@+id/issue_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:lines="@integer/issue_on_board_desc_num_of_lines"
+        android:layout_below="@id/issue_name"/>
+
+    <TextView
+        android:id="@+id/issue_remaining"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorAccent"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/issue_desc"/>
+</RelativeLayout>

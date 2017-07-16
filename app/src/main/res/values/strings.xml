@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Boards</string>
+    <string name="action_settings">Settings</string>
+    <string name="first_column_label">To Do</string>
+    <string name="second_column_label">Progress</string>
+    <string name="third_column_label">Done</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="edit_issue_done_button">Done</string>
+    <string name="edit_issue_board_label">Board</string>
+    <string name="edit_issue_story_label">Story</string>
+    <string name="edit_issue_name_label">Name</string>
+    <string name="edit_issue_desc_label">Description</string>
+    <string name="edit_issue_status_label">Status</string>
+    <string name="edit_issue_estimated_label">Estimated</string>
+    <string name="edit_text_remaining_label">Remaining</string>
+    <string name="board_fragment_tag">fragment_board</string>
+</resources>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <ScrollView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="@string/edit_issue_board_label"
+                    android:id="@+id/boardLabel"
+                    style="@style/editIssueLabels"/>
+
+                <LinearLayout
+                    style="@style/editIssueValues" >
+
+                    <Spinner
+                        android:id="@+id/boardSpinner"
+                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_weight="80"/>
+                    <ImageButton
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:src="@android:drawable/ic_menu_add"
+                        android:layout_weight="20"
+                        android:onClick="createNewBoard"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="@string/edit_issue_story_label"
+                    android:id="@+id/storyLabel"
+                    style="@style/editIssueLabels" />
+
+                <LinearLayout
+                    style="@style/editIssueValues" >
+
+                    <Spinner
+                        android:id="@+id/storySpinner"
+                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_weight="80"/>
+                    <ImageButton
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:src="@android:drawable/ic_menu_add"
+                        android:layout_weight="20"
+                        android:onClick="createNewStory"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="@string/edit_issue_name_label"
+                    android:labelFor="@+id/nameText"
+                    android:id="@+id/nameLabel"
+                    style="@style/editIssueLabels" />
+
+                <EditText
+                    android:id="@id/nameText"
+                    style="@style/editIssueValues" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="@string/edit_issue_desc_label"
+                    android:labelFor="@+id/descText"
+                    android:id="@+id/descLabel"
+                    style="@style/editIssueLabels"/>
+
+                <EditText
+                    android:id="@id/descText"
+                    style="@style/editIssueValues" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="@string/edit_issue_status_label"
+                    android:id="@+id/statusLabel"
+                    style="@style/editIssueLabels" />
+
+                <Spinner
+                    android:id="@+id/statusSpinner"
+                    style="@style/editIssueValues" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="@string/edit_issue_estimated_label"
+                    android:id="@+id/estimatedLabel"
+                    style="@style/editIssueLabels" />
+
+                <NumberPicker
+                    android:id="@+id/estimatedPicker"
+                    style="@style/editIssueValues" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="@string/edit_text_remaining_label"
+                    android:id="@+id/remainingLabel"
+                    style="@style/editIssueLabels" />
+
+                <NumberPicker
+                    android:id="@+id/remainingPicker"
+                    style="@style/editIssueValues" />
+            </LinearLayout>
+            <Button
+                android:id="@+id/issueDoneButton"
+                android:text="@string/edit_issue_done_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_margin="@dimen/edit_issue_done_button_margin"
+                android:onClick="onDone"/>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

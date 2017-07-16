@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/story_on_board">
+
+    <TextView
+        android:text="Should be set through code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/storyName"
+        android:layout_margin="@dimen/story_on_board_name_margin"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/toDoColumnItems"
+            android:orientation="vertical"
+            style="@style/columnItem" >
+
+            <!-- INJECT ISSUES HERE -->
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/progressColumnItems"
+            android:orientation="vertical"
+            style="@style/columnItem">
+
+            <!-- INJECT ISSUES HERE -->
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/doneColumnItems"
+            android:orientation="vertical"
+            style="@style/columnItem">
+
+            <!-- INJECT ISSUES HERE -->
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
