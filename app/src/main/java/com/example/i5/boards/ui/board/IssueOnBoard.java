@@ -10,7 +10,7 @@ import com.example.i5.boards.ALog;
 import com.example.i5.boards.R;
 import com.example.i5.boards.data.Issue;
 
-import static android.R.attr.name;
+import java.util.Locale;
 
 /**
  * UI representation of Issue object on a Board screen
@@ -81,6 +81,9 @@ class IssueOnBoard {
      * {@value com.example.i5.boards.data.db.TableInfos.IssueTable.ColumnNames#REMAINING}
      */
     private void setRemainingTime() {
-        mRemainingLabel.setText(Long.toString(mIssue.getRemaining()));
+        // Long.toString() doesn't take into account locale settings.
+        // Explicitly instead of implicitly using the default locale,
+        // because apparently it is a common source of bugs
+        mRemainingLabel.setText(String.format(Locale.getDefault(), "%d", mIssue.getRemaining()));
     }
 }

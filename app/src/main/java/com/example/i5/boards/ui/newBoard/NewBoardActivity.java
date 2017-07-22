@@ -2,7 +2,6 @@ package com.example.i5.boards.ui.newBoard;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,7 +14,6 @@ import com.example.i5.boards.ALog;
 import com.example.i5.boards.R;
 import com.example.i5.boards.data.Board;
 
-import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Calendar;
@@ -24,9 +22,9 @@ import java.util.GregorianCalendar;
 public class NewBoardActivity extends AppCompatActivity {
     final static private String TAG = NewBoardActivity.class.getSimpleName();
 
-    EditText mNameText;
-    DatePicker mStartTimePicker;
-    Button mDoneButton;
+    private EditText mNameText;
+    private DatePicker mStartTimePicker;
+    private Button mDoneButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

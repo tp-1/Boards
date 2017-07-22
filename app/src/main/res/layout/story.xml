@@ -6,7 +6,7 @@
     android:id="@+id/story_on_board">
 
     <TextView
-        android:text="Should be set through code"
+        android:text="@string/story_on_board_name_before_init"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/storyName"

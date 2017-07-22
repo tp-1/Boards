@@ -9,7 +9,7 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -17,12 +17,13 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:text="Name"
+                    android:text="@string/new_story_name"
                     android:id="@+id/storyNameLabel"
-                    style="@style/editIssueLabels" />
+                    style="@style/editIssueLabels"
+                    android:labelFor="@+id/storyNameText"/>
 
                 <EditText
-                    android:id="@+id/storyNameText"
+                    android:id="@id/storyNameText"
                     style="@style/editIssueValues" />
             </LinearLayout>
 
@@ -32,12 +33,13 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:text="Description"
+                    android:text="@string/new_story_description"
                     android:id="@+id/storyDescLabel"
-                    style="@style/editIssueLabels"/>
+                    style="@style/editIssueLabels"
+                    android:labelFor="@+id/storyDescText"/>
 
                 <EditText
-                    android:id="@+id/storyDescText"
+                    android:id="@id/storyDescText"
                     style="@style/editIssueValues" />
             </LinearLayout>
         </LinearLayout>
@@ -45,10 +47,10 @@
 
     <Button
         android:id="@+id/storyDoneButton"
-        android:text="Done"
+        android:text="@string/new_story_done_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_margin="10dp"/>
 </RelativeLayout>

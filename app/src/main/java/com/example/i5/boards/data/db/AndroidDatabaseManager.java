@@ -3,6 +3,8 @@ package com.example.i5.boards.data.db;//add your package name here example: pack
 //all required import files
 import java.util.ArrayList;
 import java.util.LinkedList;
+
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -11,7 +13,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -33,7 +34,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.i5.boards.ALog;
-import com.example.i5.boards.ui.newStory.NewStoryActivity;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -78,6 +78,7 @@ public class AndroidDatabaseManager extends Activity implements OnItemClickListe
 	TextView tv;
 	
 	indexInfo info = new indexInfo();
+	@SuppressLint("SetTextI18n")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -217,6 +218,7 @@ public class AndroidDatabaseManager extends Activity implements OnItemClickListe
 		//display results in tablelayout
 		submitQuery.setOnClickListener(new OnClickListener() {
 			
+			@SuppressLint("SetTextI18n")
 			@Override
 			public void onClick(View v) {
 				
@@ -323,7 +325,8 @@ public class AndroidDatabaseManager extends Activity implements OnItemClickListe
 		 // when a table names is selecte display the table contents
 		 select_table.setOnItemSelectedListener(new OnItemSelectedListener() {
 
-	            @Override
+	            @SuppressLint("SetTextI18n")
+				@Override
 	            public void onItemSelected(AdapterView<?> parent,
 	                    View view, int pos, long id) {
 	            	if(pos==0&&!indexInfo.isCustomQuery)
@@ -434,7 +437,8 @@ public class AndroidDatabaseManager extends Activity implements OnItemClickListe
 		                    							.setPositiveButton("yes", 
 		                          							new DialogInterface.OnClickListener() {
 		                          							// when user confirms by clicking on yes we drop the table by executing drop table query 	
-		                  								public void onClick(DialogInterface dialog, int which) {
+		                  								@SuppressLint("SetTextI18n")
+														public void onClick(DialogInterface dialog, int which) {
 
 									                    		String Query6 = "Drop table "+indexInfo.table_name;
 									                    		ArrayList<Cursor> aldropt=dbm.getData(Query6);
@@ -482,7 +486,8 @@ public class AndroidDatabaseManager extends Activity implements OnItemClickListe
 		                          							new DialogInterface.OnClickListener() {
 
 		                          							// when user confirms by clicking on yes we drop the table by executing delete table query 
-		                  								public void onClick(DialogInterface dialog, int which) {
+		                  								@SuppressLint("SetTextI18n")
+														public void onClick(DialogInterface dialog, int which) {
 									                    		String Query7 = "Delete  from "+indexInfo.table_name;
 									                    		ALog.d("delete table query",ALog.DATA, Query7);
 									                    		ArrayList<Cursor> aldeletet=dbm.getData(Query7);
@@ -606,7 +611,8 @@ public class AndroidDatabaseManager extends Activity implements OnItemClickListe
 	                    							.setPositiveButton("Add", 
 	                          							new DialogInterface.OnClickListener() {
 	                          							// after entering values if user clicks on add we take the values and run a insert query
-	                  								public void onClick(DialogInterface dialog, int which) {
+	                  								@SuppressLint("SetTextI18n")
+													public void onClick(DialogInterface dialog, int which) {
 
 	                  									indexInfo.index = 10;
 	                  									//tableLayout.removeAllViews();
@@ -901,6 +907,7 @@ public class AndroidDatabaseManager extends Activity implements OnItemClickListe
   							new DialogInterface.OnClickListener() {
   							
   							//this code will be executed when user changes values of edit text or spinner and clicks on ok button	
+							@SuppressLint("SetTextI18n")
 							public void onClick(DialogInterface dialog, int which) {
 
 								//get spinner value
@@ -1051,6 +1058,7 @@ public class AndroidDatabaseManager extends Activity implements OnItemClickListe
 		startActivity(getIntent());
 	}
 	
+	@SuppressLint("SetTextI18n")
 	public void refreshTable(int d )
 	{	
 		Cursor c3=null;
@@ -1198,7 +1206,8 @@ public class AndroidDatabaseManager extends Activity implements OnItemClickListe
 		 // when user clicks on the previous button update the table with the previous 10 tuples from the database
 			previous.setOnClickListener(new OnClickListener()
 		    {
-		        @Override
+		        @SuppressLint("SetTextI18n")
+				@Override
 		        public void onClick(View v) 
 		        {
 		        	int tobestartindex=(indexInfo.currentpage-2)*10;
@@ -1250,7 +1259,8 @@ public class AndroidDatabaseManager extends Activity implements OnItemClickListe
 		 // when user clicks on the next button update the table with the next 10 tuples from the database
 		 next.setOnClickListener(new OnClickListener()
 		    {
-		        @Override
+		        @SuppressLint("SetTextI18n")
+				@Override
 		        public void onClick(View v) 
 		        {
 		        	

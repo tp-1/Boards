@@ -1,16 +1,13 @@
 package com.example.i5.boards.data;
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.database.Cursor;
 import android.support.annotation.Nullable;
-import android.util.Log;
 
 import com.example.i5.boards.ALog;
 import com.example.i5.boards.data.db.TableInfos;
 
 import java.util.Random;
-import java.util.jar.Pack200;
 
 /**
  * Represents rows from the Story table.

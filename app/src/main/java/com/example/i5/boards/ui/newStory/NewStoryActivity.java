@@ -2,7 +2,6 @@ package com.example.i5.boards.ui.newStory;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,9 +18,9 @@ import org.jetbrains.annotations.NotNull;
 public class NewStoryActivity extends AppCompatActivity {
     final static private String TAG = NewStoryActivity.class.getSimpleName();
 
-    EditText mNameText;
-    EditText mDescriptionText;
-    Button mDoneButton;
+    private EditText mNameText;
+    private EditText mDescriptionText;
+    private Button mDoneButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

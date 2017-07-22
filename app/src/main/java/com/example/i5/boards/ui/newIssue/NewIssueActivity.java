@@ -20,7 +20,6 @@ import com.example.i5.boards.R;
 import com.example.i5.boards.data.Board;
 import com.example.i5.boards.data.Issue;
 import com.example.i5.boards.data.Story;
-import com.example.i5.boards.data.db.AndroidDatabaseManager;
 import com.example.i5.boards.data.db.TableInfos;
 import com.example.i5.boards.ui.debugScreen.DebugScreenActivity;
 import com.example.i5.boards.ui.newBoard.NewBoardActivity;
@@ -45,17 +44,17 @@ import org.jetbrains.annotations.NotNull;
 public class NewIssueActivity extends AppCompatActivity {
     final static private String TAG = NewIssueActivity.class.getSimpleName();
 
-    Spinner boardSpinner;
-    Spinner storySpinner;
-    EditText nameText;
-    EditText descText;
-    Spinner statusSpinner;
-    NumberPicker estimatedPicker;
-    NumberPicker remainingPicker;
-    Button doneButton;
+    private Spinner boardSpinner;
+    private Spinner storySpinner;
+    private EditText nameText;
+    private EditText descText;
+    private Spinner statusSpinner;
+    private NumberPicker estimatedPicker;
+    private NumberPicker remainingPicker;
+    private Button doneButton;
 
-    SimpleCursorAdapter boardSpinnerAdapter;
-    SimpleCursorAdapter storySpinnerAdapter;
+    private SimpleCursorAdapter boardSpinnerAdapter;
+    private SimpleCursorAdapter storySpinnerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

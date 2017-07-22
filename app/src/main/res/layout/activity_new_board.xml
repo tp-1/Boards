@@ -9,7 +9,7 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -17,12 +17,13 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:text="Name"
+                    android:text="@string/new_board_name"
                     android:id="@+id/boardNameLabel"
-                    style="@style/editIssueLabels" />
+                    style="@style/editIssueLabels"
+                    android:labelFor="@+id/boardNameText"/>
 
                 <EditText
-                    android:id="@+id/boardNameText"
+                    android:id="@id/boardNameText"
                     style="@style/editIssueValues" />
             </LinearLayout>
 
@@ -32,7 +33,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:text="Start time"
+                    android:text="@string/new_board_start_time"
                     android:id="@+id/boardStartTimeLabel"
                     style="@style/editIssueLabels"/>
 
@@ -45,10 +46,10 @@
 
     <Button
         android:id="@+id/boardDoneButton"
-        android:text="Done"
+        android:text="@string/new_board_done_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_margin="10dp"/>
 </RelativeLayout>

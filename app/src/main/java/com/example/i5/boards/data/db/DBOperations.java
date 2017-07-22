@@ -2,10 +2,8 @@ package com.example.i5.boards.data.db;
 
 import android.app.Application;
 import android.content.ContentValues;
-import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import com.example.i5.boards.ALog;
 
@@ -22,9 +20,9 @@ public class DBOperations {
      * This is so ugly I don't know how I'm gonna live with myself
      */
     private static Application mAppContext;
-    SQLiteDatabase mDb;
+    private SQLiteDatabase mDb;
 
-    public static DBOperations sInstance;
+    private static DBOperations sInstance;
 
     // FIXME: 14-Jul-17 DATABASE ACCESS, MOVE FROM UI THREAD
     private DBOperations(Application context) {

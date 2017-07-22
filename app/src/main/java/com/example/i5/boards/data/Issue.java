@@ -2,7 +2,6 @@ package com.example.i5.boards.data;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import android.util.Log;
 
 import com.example.i5.boards.ALog;
 import com.example.i5.boards.data.db.TableInfos;
@@ -34,7 +33,7 @@ public class Issue extends TableRow {
      * Represents status of completion the issue can be in
      */
     public enum Status {
-        TODO, PROGRESS, DONE;
+        TODO, PROGRESS, DONE
     }
 
     public Issue() {

@@ -5,8 +5,6 @@
     <string name="second_column_label">Progress</string>
     <string name="third_column_label">Done</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="edit_issue_done_button">Done</string>
     <string name="edit_issue_board_label">Board</string>
     <string name="edit_issue_story_label">Story</string>
@@ -15,9 +13,19 @@
     <string name="edit_issue_status_label">Status</string>
     <string name="edit_issue_estimated_label">Estimated</string>
     <string name="edit_text_remaining_label">Remaining</string>
-    <string name="board_fragment_tag">fragment_board</string>
+
     <string name="title_activity_debug_screen">Debug screen</string>
     <string name="debug_database_manager_button">Database manager</string>
     <string name="debug_ui_checkbox">UI</string>
     <string name="debug_data_checkbox">Data</string>
+
+    <string name="new_board_name">Name</string>
+    <string name="new_board_start_time">Start time</string>
+    <string name="new_board_done_button">Done</string>
+
+    <string name="new_story_name">Name</string>
+    <string name="new_story_description">Description</string>
+    <string name="new_story_done_button">Done</string>
+
+    <string name="story_on_board_name_before_init">Should be set through code</string>
 </resources>
