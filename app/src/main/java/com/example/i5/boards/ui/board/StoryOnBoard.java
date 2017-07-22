@@ -56,7 +56,7 @@ class StoryOnBoard {
         mStory = story;
         mBoardId = boardId;
 
-        ALog.v(TAG, "Created new StoryOnBoard instance, instantiated ui fields");
+        ALog.v(TAG, ALog.UI, "Created new StoryOnBoard instance, instantiated ui fields");
     }
 
      /**
@@ -78,7 +78,7 @@ class StoryOnBoard {
       * </p>
       */
     /* package */ void draw(Context context) {
-        ALog.d(TAG, "Drawing UI (storyId = %d)...", mStory.getId());
+        ALog.d(TAG, ALog.UI, "Drawing UI (storyId = %d)...", mStory.getId());
 
         setTitle();
         for (IssueOnBoard iob : issueItemList) {
@@ -92,7 +92,7 @@ class StoryOnBoard {
       * Doesn't draw issues.
       */
     private void loadIssues() {
-        ALog.d(TAG, "Loading issues to put in a story...");
+        ALog.d(TAG, ALog.UI, "Loading issues to put in a story...");
 
         // FIXME: 15-Jul-17 DATABASE ACCESS
         Cursor cursor = mStory.getIssuesFromBoard(mBoardId);
@@ -118,7 +118,7 @@ class StoryOnBoard {
                     issueParentLayout = mDoneColumnItemsLayout;
                     break;
                 default:
-                    ALog.e(TAG, "Unrecognized Issue status!");
+                    ALog.e(TAG, ALog.UI, "Unrecognized Issue status!");
                     continue;
             }
             issueItemList.add(new IssueOnBoard(issueParentLayout, issue));

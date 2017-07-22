@@ -58,7 +58,7 @@ public class Story extends TableRow {
         story.setDescription(desc);
         story.id = new Random(System.currentTimeMillis()).nextLong();
 
-        ALog.d(TAG, "Created a dummy story with id = " + story.id);
+        ALog.d(TAG, ALog.DATA, "Created a dummy story with id = " + story.id);
 
         return story;
     }
@@ -75,10 +75,10 @@ public class Story extends TableRow {
         Story story = null;
         if (c.moveToNext()) {
             story = new Story(c);
-            ALog.d(TAG, "Restored story " + id + " from id");
-            ALog.v(TAG, "Story:\n", story);
+            ALog.d(TAG, ALog.DATA, "Restored story " + id + " from id");
+            ALog.v(TAG, ALog.DATA, "Story:\n", story);
         } else {
-            ALog.w(TAG, "Couldn't restore story with id = " + id);
+            ALog.w(TAG, ALog.DATA, "Couldn't restore story with id = " + id);
         }
         return story;
     }
@@ -106,8 +106,8 @@ public class Story extends TableRow {
         name = cursor.getString(1);
         description = cursor.getString(2);
 
-        ALog.d(TAG, "Restored story " + id + " from cursor");
-        ALog.v(TAG, "Story:\n", this);
+        ALog.d(TAG, ALog.DATA, "Restored story " + id + " from cursor");
+        ALog.v(TAG, ALog.DATA, "Story:\n", this);
     }
 
     /**
@@ -128,7 +128,7 @@ public class Story extends TableRow {
      * matches the given boardId
      */
     public Cursor getIssuesFromBoard(long boardId) {
-        ALog.d(TAG, "Getting all issues from a story " + id + " on board " + boardId);
+        ALog.d(TAG, ALog.DATA, "Getting all issues from a story " + id + " on board " + boardId);
 
         String selection = TableInfos.IssueTable.ColumnNames.STORY_KEY + " = ? AND " +
                 TableInfos.IssueTable.ColumnNames.BOARD_KEY + " = ?";

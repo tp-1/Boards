@@ -35,7 +35,7 @@ class IssueOnBoard {
         mParentView = parentView;
         mIssue = issue;
 
-        ALog.v(TAG, "Created new IssueOnBoard instance");
+        ALog.v(TAG, ALog.UI, "Created new IssueOnBoard instance");
     }
 
     /**
@@ -43,7 +43,7 @@ class IssueOnBoard {
      * Fill the issue card UI with data stored in {@link #mIssue}
      */
     /*package*/ void draw(Context context) {
-        ALog.d(TAG, "Drawing UI (issueId = %d), initializing ui fields...",
+        ALog.d(TAG, ALog.UI, "Drawing UI (issueId = %d), initializing ui fields...",
                 mIssue.getId());
 
         LayoutInflater inflater = LayoutInflater.from(context);

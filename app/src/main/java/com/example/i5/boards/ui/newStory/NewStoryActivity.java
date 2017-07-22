@@ -28,7 +28,7 @@ public class NewStoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_story);
 
-        ALog.v(TAG, "Creating NewStoryActivity");
+        ALog.v(TAG, ALog.UI, "Creating NewStoryActivity");
 
 
         mNameText = (EditText)findViewById(R.id.storyNameText);
@@ -62,7 +62,7 @@ public class NewStoryActivity extends AppCompatActivity {
      * Finishes the activity.
      */
     private void finishEditing() {
-        ALog.d(TAG, "Setting result and finishing activity");
+        ALog.d(TAG, ALog.UI, "Setting result and finishing activity");
 
         saveToDatabase();
         Intent data = new Intent();
@@ -75,7 +75,7 @@ public class NewStoryActivity extends AppCompatActivity {
      * Assumes field validity was already established.
      */
     private void saveToDatabase() {
-        ALog.d(TAG, "Taking data from ui and saving to database");
+        ALog.d(TAG, ALog.UI, "Taking data from ui and saving to database");
 
         String name = mNameText.getText().toString();
         String desc = mDescriptionText.getText().toString();
@@ -96,7 +96,7 @@ public class NewStoryActivity extends AppCompatActivity {
         if (mNameText.getText().toString().trim().isEmpty()) {
             valid = false;
         }
-        ALog.d(TAG, "Validating fields; valid = %b", valid);
+        ALog.d(TAG, ALog.UI, "Validating fields; valid = %b", valid);
         return valid;
     }
 

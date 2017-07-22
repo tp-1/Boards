@@ -58,8 +58,8 @@ public class Issue extends TableRow {
         logged = cursor.getLong(7);
         remaining = cursor.getLong(8);
 
-        ALog.d(TAG, "Restored issue " + id + " from cursor");
-        ALog.v(TAG, "Issue:\n", this);
+        ALog.d(TAG, ALog.DATA, "Restored issue " + id + " from cursor");
+        ALog.v(TAG, ALog.DATA, "Issue:\n", this);
     }
 
     @Override

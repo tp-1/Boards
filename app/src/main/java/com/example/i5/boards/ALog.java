@@ -11,6 +11,8 @@ import android.util.Log;
  * Pass bits representing wanted filters when logging a message.
  * In debug screen (to be updated), choose which filters should be displayed.
  *
+ * TODO file logging
+ *
  * Just to checkout:
  * https://zerocredibility.wordpress.com/2012/03/08/android-advanced-logger/
  */

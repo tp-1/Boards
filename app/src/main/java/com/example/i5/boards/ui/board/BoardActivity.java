@@ -42,7 +42,7 @@ public class BoardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_board);
 
-        ALog.v(TAG, "Creating BoardActivity");
+        ALog.v(TAG, ALog.UI, "Creating BoardActivity");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -60,7 +60,7 @@ public class BoardActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        ALog.d(TAG, "Result received; request code = %d, result code = %d",
+        ALog.d(TAG, ALog.UI, "Result received; request code = %d, result code = %d",
                 requestCode, resultCode);
 
         switch (requestCode) {
@@ -76,7 +76,7 @@ public class BoardActivity extends AppCompatActivity {
      * Take user to {@link NewIssueActivity}, so he can create a new issue
      */
     private void createNewIssue() {
-        ALog.d(TAG, "Starting NewIssueActivity for result");
+        ALog.d(TAG, ALog.UI, "Starting NewIssueActivity for result");
         Intent intent = NewIssueActivity.getIntentToStart(this);
         startActivityForResult(intent, NEW_ISSUE_ACTIVITY_CODE);
     }

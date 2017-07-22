@@ -79,7 +79,7 @@ public class DebugScreenActivity extends AppCompatActivity {
      * @see ALog
      */
     private void updateLogFilters(boolean shouldIncludeFilter, int filter) {
-        ALog.d(TAG, "Updating log filters. Filter = %d, add? %b",
+        ALog.d(TAG, ALog.UI, "Updating log filters. Filter = %d, add? %b",
                 filter, shouldIncludeFilter);
 
         if (shouldIncludeFilter) {
@@ -93,7 +93,7 @@ public class DebugScreenActivity extends AppCompatActivity {
      * Start {@link AndroidDatabaseManager} activity
      */
     private void startDatabaseManager() {
-        ALog.d(TAG, "Starting AndroidDatabaseManager");
+        ALog.d(TAG, ALog.UI, "Starting AndroidDatabaseManager");
         Intent intent = AndroidDatabaseManager.getIntentToStart(DebugScreenActivity.this);
         startActivity(intent);
     }

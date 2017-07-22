@@ -44,7 +44,7 @@ public class BoardFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        ALog.v(TAG, "View created for BoardFragment");
+        ALog.v(TAG, ALog.UI, "View created for BoardFragment");
         //mBoardItems = (ListView) view.findViewById(R.id.boardItems);
         // mBoardItems.setAdapter(new StoryAdapter(this, , 0));
 
@@ -56,7 +56,7 @@ public class BoardFragment extends Fragment {
      * @param view Fragment's view
      */
     private void loadData(View view) {
-        ALog.d(TAG, "About to load data and draw UI for fragment...");
+        ALog.d(TAG, ALog.UI, "About to load data and draw UI for fragment...");
 
         View storyView = view.findViewById(R.id.story_on_board);
 
@@ -76,7 +76,7 @@ public class BoardFragment extends Fragment {
      * Call when you need to reload data in current fragment and redraw the UI
      */
     /* package */ void reload() {
-        ALog.d(TAG, "Reload fragment");
+        ALog.d(TAG, ALog.UI, "Reload fragment");
         View view = getView();
         if (view != null) {
             loadData(view);

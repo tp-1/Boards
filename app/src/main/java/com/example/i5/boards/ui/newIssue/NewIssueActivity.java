@@ -62,7 +62,7 @@ public class NewIssueActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_issue);
 
-        ALog.v(TAG, "Creating NewIssueActivity");
+        ALog.v(TAG, ALog.UI, "Creating NewIssueActivity");
 
         boardSpinner = (Spinner)findViewById(R.id.boardSpinner);
         storySpinner = (Spinner)findViewById(R.id.storySpinner);
@@ -92,7 +92,7 @@ public class NewIssueActivity extends AppCompatActivity {
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         statusSpinner.setAdapter(spinnerAdapter);
 
-        ALog.v(TAG, "Set status spinner adapter");
+        ALog.v(TAG, ALog.UI, "Set status spinner adapter");
     }
 
     /**
@@ -101,7 +101,7 @@ public class NewIssueActivity extends AppCompatActivity {
     private void setBoardSpinnerAdapter() {
         boardSpinnerAdapter = setCursorSpinnerAdapter(boardSpinner, Board.getAll(),
                 TableInfos.BoardTable.ColumnNames.NAME);
-        ALog.v(TAG, "Set board spinner adapter");
+        ALog.v(TAG, ALog.UI, "Set board spinner adapter");
     }
 
     /**
@@ -110,7 +110,7 @@ public class NewIssueActivity extends AppCompatActivity {
     private void setStorySpinnerAdapter() {
         storySpinnerAdapter = setCursorSpinnerAdapter(storySpinner, Story.getAll(),
                 TableInfos.StoryTable.ColumnNames.NAME);
-        ALog.v(TAG, "Set story spinner adapter");
+        ALog.v(TAG, ALog.UI, "Set story spinner adapter");
     }
 
     /**
@@ -150,14 +150,14 @@ public class NewIssueActivity extends AppCompatActivity {
                 }
             }
         });
-        ALog.d(TAG, "Set debug entry point");
+        ALog.d(TAG, ALog.UI, "Set debug entry point");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        ALog.d(TAG, "Resuming NewIssueActivity, changing spinner cursors");
+        ALog.d(TAG, ALog.UI, "Resuming NewIssueActivity, changing spinner cursors");
         boardSpinnerAdapter.changeCursor(Board.getAll());
         storySpinnerAdapter.changeCursor(Story.getAll());
     }
@@ -169,7 +169,7 @@ public class NewIssueActivity extends AppCompatActivity {
      * Starts the {@link NewBoardActivity} so user can create a new board
      */
     public void createNewBoard(View view) {
-        ALog.d(TAG, "Starting NewBoardActivity");
+        ALog.d(TAG, ALog.UI, "Starting NewBoardActivity");
         // TODO: 15-Jul-17 startActivityForResult
         Intent intent = NewBoardActivity.getIntentToStart(this);
         startActivity(intent);
@@ -180,7 +180,7 @@ public class NewIssueActivity extends AppCompatActivity {
      * Starts the {@link NewStoryActivity} so user can create a new story
      */
     public void createNewStory(View view) {
-        ALog.d(TAG, "Starting NewStoryActivity");
+        ALog.d(TAG, ALog.UI, "Starting NewStoryActivity");
         // TODO: 15-Jul-17 startActivityForResult
         Intent intent = NewStoryActivity.getIntentToStart(this);
         startActivity(intent);
@@ -213,7 +213,7 @@ public class NewIssueActivity extends AppCompatActivity {
         } else if (descText.getText().toString().trim().isEmpty()) {
             valid = false;
         }
-        ALog.d(TAG, "Validating fields; valid = %b", valid);
+        ALog.d(TAG, ALog.UI, "Validating fields; valid = %b", valid);
         return valid;
     }
 
@@ -224,7 +224,7 @@ public class NewIssueActivity extends AppCompatActivity {
      * Finishes the activity.
      */
     private void finishEditing() {
-        ALog.d(TAG, "Setting result and finishing activity");
+        ALog.d(TAG, ALog.UI, "Setting result and finishing activity");
 
         saveToDatabase();
         Intent data = new Intent();
@@ -237,7 +237,7 @@ public class NewIssueActivity extends AppCompatActivity {
      * Assumes field validity was already established.
      */
     private void saveToDatabase() {
-        ALog.d(TAG, "Taking data from ui and saving to database");
+        ALog.d(TAG, ALog.UI, "Taking data from ui and saving to database");
 
         Cursor boardItem = (Cursor) boardSpinner.getSelectedItem();
         Cursor storyItem = (Cursor) storySpinner.getSelectedItem();

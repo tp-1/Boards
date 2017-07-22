@@ -26,7 +26,7 @@ class DBHelper extends SQLiteOpenHelper {
 
     DBHelper(Context context) {
         super(context, DATABASE_NAME , null, DATABASE_VERSION);
-        ALog.d(TAG, "DBHelper object constructed");
+        ALog.d(TAG, ALog.DATA, "DBHelper object constructed");
     }
 
     @Override
@@ -47,7 +47,7 @@ class DBHelper extends SQLiteOpenHelper {
                              " (" + columns + ")";
 
         db.execSQL(createTable);
-        ALog.d(TAG, "Creating Board table");
+        ALog.d(TAG, ALog.DATA, "Creating Board table");
     }
 
     /**
@@ -61,7 +61,7 @@ class DBHelper extends SQLiteOpenHelper {
                 " (" + columns + ")";
 
         db.execSQL(createTable);
-        ALog.d(TAG, "Creating Story table");
+        ALog.d(TAG, ALog.DATA, "Creating Story table");
     }
 
     /**
@@ -81,12 +81,12 @@ class DBHelper extends SQLiteOpenHelper {
                 " (" + columns + ")";
 
         db.execSQL(createTable);
-        ALog.d(TAG, "Creating Issue table");
+        ALog.d(TAG, ALog.DATA, "Creating Issue table");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        ALog.d(TAG, "Upgrading database...");
+        ALog.d(TAG, ALog.DATA, "Upgrading database...");
 
         db.execSQL("DROP TABLE IF EXISTS " + TableInfos.BoardTable.NAME);
         db.execSQL("DROP TABLE IF EXISTS " + TableInfos.StoryTable.NAME);
@@ -99,7 +99,7 @@ class DBHelper extends SQLiteOpenHelper {
      * Added by {@link AndroidDatabaseManager}
      */
     public ArrayList<Cursor> getData(String Query){
-        ALog.d(TAG, "AndroidDatabaseManager's getData() method called");
+        ALog.d(TAG, ALog.DATA, "AndroidDatabaseManager's getData() method called");
 
         //get writable database
         SQLiteDatabase sqlDB = this.getWritableDatabase();
@@ -129,13 +129,13 @@ class DBHelper extends SQLiteOpenHelper {
             }
             return alc;
         } catch(SQLException sqlEx){
-            ALog.d("printing exception", sqlEx.getMessage());
+            ALog.d("printing exception", ALog.DATA, sqlEx.getMessage());
             //if any exceptions are triggered save the error message to cursor an return the arraylist
             Cursor2.addRow(new Object[] { ""+sqlEx.getMessage() });
             alc.set(1,Cursor2);
             return alc;
         } catch(Exception ex){
-            ALog.d("printing exception", ex.getMessage());
+            ALog.d("printing exception", ALog.DATA, ex.getMessage());
 
             //if any exceptions are triggered save the error message to cursor an return the arraylist
             Cursor2.addRow(new Object[] { ""+ex.getMessage() });

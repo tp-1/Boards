@@ -44,7 +44,7 @@ abstract class TableRow {
      * @return Cursor over all rows from the table
      */
     static public Cursor getAll() {
-        ALog.w(TAG, "Using superclass' getAll() method that should be 'overriden'");
+        ALog.w(TAG, ALog.DATA, "Using superclass' getAll() method that should be 'overriden'");
         return null;
     }
 }

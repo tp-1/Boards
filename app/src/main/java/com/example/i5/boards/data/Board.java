@@ -59,8 +59,8 @@ public class Board extends TableRow {
     @Override
     protected void restoreFromCursor(Cursor cursor) {
         // TODO: 13-Jul-17
-        ALog.d(TAG, "Restored board " + mId + " from cursor");
-        ALog.v(TAG, "Board:\n", this);
+        ALog.d(TAG, ALog.DATA, "Restored board " + mId + " from cursor");
+        ALog.v(TAG, ALog.DATA, "Board:\n", this);
     }
 
     @Override

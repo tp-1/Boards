@@ -225,7 +225,7 @@ public class AndroidDatabaseManager extends Activity implements OnItemClickListe
 				
 				ArrayList<Cursor> alc2;
 				String Query10=customquerytext.getText().toString();
-				ALog.d("query",Query10);
+				ALog.d("query",ALog.DATA, Query10);
 				//pass the query to getdata method and get results
 				alc2 = dbm.getData(Query10);
 				final Cursor c4=alc2.get(0);
@@ -274,7 +274,7 @@ public class AndroidDatabaseManager extends Activity implements OnItemClickListe
 		
 		Message.moveToLast();
 		String msg = Message.getString(0);
-		ALog.d("Message from sql = ",msg);
+		ALog.d("Message from sql = ",ALog.DATA, msg);
 
 		ArrayList<String> tablenames = new ArrayList<String>();
 		
@@ -353,7 +353,7 @@ public class AndroidDatabaseManager extends Activity implements OnItemClickListe
 	            	c.moveToPosition(pos-1);
 	            	indexInfo.cursorpostion=pos-1;
 	            	//displaying the content of the table which is selected in the select_table spinner
-	            	ALog.d("selected table name is",""+c.getString(0));
+	            	ALog.d("selected table name is",ALog.DATA, ""+c.getString(0));
 	            	indexInfo.table_name=c.getString(0);
 	            	tvmessage.setText("Error Messages will be displayed here");
 	            	tvmessage.setBackgroundColor(Color.WHITE);
@@ -394,7 +394,7 @@ public class AndroidDatabaseManager extends Activity implements OnItemClickListe
 	                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);                                 
 	                spinnertable.setAdapter(adapter);
 	            	String Query2 ="select * from "+c.getString(0);
-	            	ALog.d("",""+Query2);
+	            	ALog.d("",ALog.DATA, ""+Query2);
 
 	            	//getting contents of the table which user selected from the select_table spinner
 	            	ArrayList<Cursor> alc2=dbm.getData(Query2);
@@ -407,7 +407,7 @@ public class AndroidDatabaseManager extends Activity implements OnItemClickListe
 	            	{
 	            	int counts = c2.getCount();
 	            	indexInfo.isEmpty=false;
-	            	ALog.d("counts",""+counts);
+	            	ALog.d("counts",ALog.DATA, ""+counts);
 	            	tv.setText(""+counts);
 
 
@@ -440,7 +440,7 @@ public class AndroidDatabaseManager extends Activity implements OnItemClickListe
 									                    		ArrayList<Cursor> aldropt=dbm.getData(Query6);
 																	Cursor tempc=aldropt.get(1);
 																	tempc.moveToLast();
-																	ALog.d("Drop table Mesage",tempc.getString(0));
+																	ALog.d("Drop table Mesage",ALog.DATA, tempc.getString(0));
 																	if(tempc.getString(0).equalsIgnoreCase("Success"))
 																	{
 																		tvmessage.setBackgroundColor(Color.parseColor("#2ecc71"));
@@ -484,11 +484,11 @@ public class AndroidDatabaseManager extends Activity implements OnItemClickListe
 		                          							// when user confirms by clicking on yes we drop the table by executing delete table query 
 		                  								public void onClick(DialogInterface dialog, int which) {
 									                    		String Query7 = "Delete  from "+indexInfo.table_name;
-									                    		ALog.d("delete table query",Query7);
+									                    		ALog.d("delete table query",ALog.DATA, Query7);
 									                    		ArrayList<Cursor> aldeletet=dbm.getData(Query7);
 																	Cursor tempc=aldeletet.get(1);
 																	tempc.moveToLast();
-																	ALog.d("Delete table Mesage",tempc.getString(0));
+																	ALog.d("Delete table Mesage",ALog.DATA, tempc.getString(0));
 																	if(tempc.getString(0).equalsIgnoreCase("Success"))
 																	{
 																		tvmessage.setBackgroundColor(Color.parseColor("#2ecc71"));
@@ -583,7 +583,7 @@ public class AndroidDatabaseManager extends Activity implements OnItemClickListe
 	                                ll.addView(et,tvl);
 	                                ll.setId(lid);
 
-	                        	    ALog.d("Edit Text Value",""+et.getText().toString());
+	                        	    ALog.d("Edit Text Value",ALog.DATA, ""+et.getText().toString());
 
 	                        	    RelativeLayout.LayoutParams rll = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 	                          	  	rll.addRule(RelativeLayout.BELOW,ll.getId()-1 );
@@ -593,7 +593,7 @@ public class AndroidDatabaseManager extends Activity implements OnItemClickListe
 	                        	    }
 	                        	    addnewlayout.setBackgroundColor(Color.WHITE);
 	                        	    addrowsv.addView(addnewlayout);
-	                          	ALog.d("Button Clicked", "");
+	                          	ALog.d("Button Clicked", ALog.DATA, "");
 	                          	//the above form layout which we have created above will be displayed in an alert dialog
 	                          	runOnUiThread(new Runnable() {
 	                    			   @Override
@@ -647,11 +647,11 @@ public class AndroidDatabaseManager extends Activity implements OnItemClickListe
 
 	                  									}
 	                  									//this is the insert query which has been generated
-	                  									ALog.d("Insert Query",Query4);
+	                  									ALog.d("Insert Query",ALog.DATA, Query4);
 	                  									ArrayList<Cursor> altc=dbm.getData(Query4);
 	                  									Cursor tempc=altc.get(1);
 	                  									tempc.moveToLast();
-	                  									ALog.d("Add New Row",tempc.getString(0));
+	                  									ALog.d("Add New Row",ALog.DATA, tempc.getString(0));
 	                  									if(tempc.getString(0).equalsIgnoreCase("Success"))
 														{
 															tvmessage.setBackgroundColor(Color.parseColor("#2ecc71"));
@@ -866,7 +866,7 @@ public class AndroidDatabaseManager extends Activity implements OnItemClickListe
         
         et.setTextColor(Color.parseColor("#000000"));
 	    et.setId(k);
-	    ALog.d("text View Value",""+tv.getText().toString());
+	    ALog.d("text View Value",ALog.DATA, ""+tv.getText().toString());
 	    final LinearLayout ll = new LinearLayout(AndroidDatabaseManager.this);
     	ll.setBackgroundColor(Color.parseColor("#FFFFFF"));
     	ll.setId(lid);
@@ -877,7 +877,7 @@ public class AndroidDatabaseManager extends Activity implements OnItemClickListe
 	    ll.addView(tv);
 	    ll.addView(et);
 	    
-	    ALog.d("Edit Text Value",""+et.getText().toString());
+	    ALog.d("Edit Text Value",ALog.DATA, ""+et.getText().toString());
 	    
 	    RelativeLayout.LayoutParams rll = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
   	  	rll.addRule(RelativeLayout.BELOW,ll.getId()-1 );
@@ -959,12 +959,12 @@ public class AndroidDatabaseManager extends Activity implements OnItemClickListe
 
 									}
 								}
-								ALog.d("Update Query",Query3);
+								ALog.d("Update Query",ALog.DATA, Query3);
 								//dbm.getData(Query3);
 								ArrayList<Cursor> aluc=dbm.getData(Query3);
 								Cursor tempc=aluc.get(1);
 								tempc.moveToLast();
-								ALog.d("Update Mesage",tempc.getString(0));
+								ALog.d("Update Mesage",ALog.DATA, tempc.getString(0));
 
 								if(tempc.getString(0).equalsIgnoreCase("Success"))
 								{
@@ -1008,14 +1008,14 @@ public class AndroidDatabaseManager extends Activity implements OnItemClickListe
 
 										}
 									}
-									ALog.d("Delete Query",Query5);
+									ALog.d("Delete Query",ALog.DATA, Query5);
 
 									dbm.getData(Query5);
 
 									ArrayList<Cursor> aldc=dbm.getData(Query5);
 									Cursor tempc=aldc.get(1);
 									tempc.moveToLast();
-									ALog.d("Update Mesage",tempc.getString(0));
+									ALog.d("Update Mesage",ALog.DATA, tempc.getString(0));
 
 									if(tempc.getString(0).equalsIgnoreCase("Success"))
 									{
@@ -1072,7 +1072,7 @@ public class AndroidDatabaseManager extends Activity implements OnItemClickListe
     	{
     	int counts = c3.getCount();
 
-    	ALog.d("counts",""+counts);
+    	ALog.d("counts",ALog.DATA, ""+counts);
     	tv.setText(""+counts);
 		TableRow tableheader = new TableRow(getApplicationContext());
 
@@ -1242,7 +1242,7 @@ public class AndroidDatabaseManager extends Activity implements OnItemClickListe
 
 		            	indexInfo.index=tobestartindex;
 
-		            	ALog.d("index =",""+indexInfo.index);
+		            	ALog.d("index =",ALog.DATA, ""+indexInfo.index);
 		            }
 		        } 
 		    });

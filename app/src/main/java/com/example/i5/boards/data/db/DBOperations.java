@@ -31,7 +31,7 @@ public class DBOperations {
         DBHelper dbHelper = new DBHelper(context);
         mDb = dbHelper.getWritableDatabase();
 
-        ALog.d(TAG, "Creating DBOperations singleton");
+        ALog.d(TAG, ALog.DATA, "Creating DBOperations singleton");
     }
 
     /**
@@ -44,7 +44,7 @@ public class DBOperations {
     public static DBOperations getInstance() {
         if (sInstance == null) {
             if (mAppContext == null) {
-                ALog.e(TAG, "Creating a DBOperations object without an application context");
+                ALog.e(TAG, ALog.DATA, "Creating a DBOperations object without an application context");
                 throw new IllegalArgumentException("App context for creating a db is null");
             }
             sInstance = new DBOperations(mAppContext);
@@ -58,7 +58,7 @@ public class DBOperations {
      */
     public static void setDatabaseContext(Application context) {
         mAppContext = context;
-        ALog.d(TAG, "Setting database context");
+        ALog.d(TAG, ALog.DATA, "Setting database context");
     }
 
     public final int BOARD_ALL_PROJECTION_ID = 0; //FIXME this is ugly and possibly doesn't belong here
@@ -87,9 +87,9 @@ public class DBOperations {
      * Query the given table, returning a Cursor over the result set.
      */
     public Cursor query(String tableName, String[] projection, String selection, String[] args) {
-        ALog.d(TAG, "Querying database, table " + tableName);
+        ALog.d(TAG, ALog.DATA, "Querying database, table " + tableName);
         // FIXME: 15-Jul-17 Arrays.toString() called for every query!
-        ALog.v(TAG, "Table name = %s\nProjection = %s\nSelection = %s\n" +
+        ALog.v(TAG, ALog.DATA, "Table name = %s\nProjection = %s\nSelection = %s\n" +
                         "Selection arguments = %s", tableName,
                 Arrays.toString(projection), selection, Arrays.toString(args));
         return mDb.query(tableName, projection, selection, args, null, null, null);
@@ -102,8 +102,8 @@ public class DBOperations {
      * @return the row ID of the newly inserted row, or -1 if an error occurred
      */
     public long save(String tableName, ContentValues cv) {
-        ALog.d(TAG, "Saving values to database, table " + tableName);
-        ALog.v(TAG, "Table = %s\nValues = %s", tableName, cv);
+        ALog.d(TAG, ALog.DATA, "Saving values to database, table " + tableName);
+        ALog.v(TAG, ALog.DATA, "Table = %s\nValues = %s", tableName, cv);
         return mDb.insert(tableName, null, cv);
     }
 }
