@@ -13,7 +13,7 @@ import android.view.MenuItem;
 import com.example.i5.boards.ALog;
 import com.example.i5.boards.R;
 import com.example.i5.boards.data.db.DBOperations;
-import com.example.i5.boards.ui.newIssue.NewIssueActivity;
+import com.example.i5.boards.ui.newItem.NewIssueActivity;
 
 /**
  * Activity for managing the selected Board with list of it's stories and issues.

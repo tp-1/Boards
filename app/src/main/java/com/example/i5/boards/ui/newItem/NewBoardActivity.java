@@ -1,4 +1,4 @@
-package com.example.i5.boards.ui.newBoard;
+package com.example.i5.boards.ui.newItem;
 
 import android.content.Context;
 import android.content.Intent;
@@ -19,7 +19,14 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-public class NewBoardActivity extends AppCompatActivity {
+/**
+ * Activity for creating(/editing?) a new board.
+ * Contains:
+ * <ul>
+ *     <li> Widgets to fill in {@link Board} fields </li>
+ * </ul>
+ */
+public class NewBoardActivity extends NewItemActivity {
     final static private String TAG = NewBoardActivity.class.getSimpleName();
 
     private EditText mNameText;
@@ -36,47 +43,10 @@ public class NewBoardActivity extends AppCompatActivity {
         mNameText = (EditText)findViewById(R.id.boardNameText);
         mStartTimePicker = (DatePicker)findViewById(R.id.boardStartTimePicker);
         mDoneButton = (Button)findViewById(R.id.boardDoneButton);
-
-        mDoneButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onDone();
-            }
-        });
     }
 
-    /**
-     * Checks if fields are valid and lets the flow continue in case they are
-     */
-    private void onDone() {
-        if (areFieldsValid()) {
-            finishEditing();
-        } else {
-            Toast.makeText(this, "Some fields are empty",
-                    Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    /**
-     * Call when user finished editing and his data is validated and ready to be processed.
-     * Saves data to database.
-     * Sets the result returned to the activity's caller to {@link #RESULT_OK}
-     * Finishes the activity.
-     */
-    private void finishEditing() {
-        ALog.d(TAG, ALog.UI, "Setting result and finishing activity");
-
-        saveToDatabase();
-        Intent data = new Intent();
-        setResult(RESULT_OK, data);
-        finish();
-    }
-
-    /**
-     * Take data user filled in from the UI and save it to the database.
-     * Assumes field validity was already established.
-     */
-    private void saveToDatabase() {
+    @Override
+    protected void saveToDatabase() {
         ALog.d(TAG, ALog.UI, "Taking data from ui and saving to database");
 
         String name = mNameText.getText().toString();
@@ -92,17 +62,19 @@ public class NewBoardActivity extends AppCompatActivity {
         board.save();
     }
 
-    /**
-     * @return whether all fields were filled correctly and data can be processed
-     * TODO add more checks
-     */
-    private boolean areFieldsValid() {
+    @Override
+    protected boolean areFieldsValid() {
         boolean valid = true;
         if (mNameText.getText().toString().trim().isEmpty()) {
             valid =  false;
         }
         ALog.d(TAG, ALog.UI, "Validating fields; valid = %b", valid);
         return valid;
+    }
+
+    @Override
+    protected String getLogTag() {
+        return TAG;
     }
 
     /**

@@ -12,6 +12,7 @@ import android.widget.CompoundButton;
 import com.example.i5.boards.ALog;
 import com.example.i5.boards.R;
 import com.example.i5.boards.data.db.AndroidDatabaseManager;
+import com.example.i5.boards.ui.newItem.NewIssueActivity;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -24,7 +25,7 @@ import org.jetbrains.annotations.NotNull;
  * <li> Checkboxes for adding and removing log filters </li>
  * </ul>
  *
- * Enter debug screen through {@link com.example.i5.boards.ui.newIssue.NewIssueActivity}
+ * Enter debug screen through {@link NewIssueActivity}
  */
 public class DebugScreenActivity extends AppCompatActivity {
     final static private String TAG = DebugScreenActivity.class.getSimpleName();

@@ -1,4 +1,4 @@
-package com.example.i5.boards.ui.newIssue;
+package com.example.i5.boards.ui.newItem;
 
 import android.content.Context;
 import android.content.Intent;
@@ -22,8 +22,6 @@ import com.example.i5.boards.data.Issue;
 import com.example.i5.boards.data.Story;
 import com.example.i5.boards.data.db.TableInfos;
 import com.example.i5.boards.ui.debugScreen.DebugScreenActivity;
-import com.example.i5.boards.ui.newBoard.NewBoardActivity;
-import com.example.i5.boards.ui.newStory.NewStoryActivity;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -38,10 +36,8 @@ import org.jetbrains.annotations.NotNull;
  *     <li> Spinner for choosing a story + possibility to create a new story </li>
  *     <li> Widgets to fill in other {@link Issue} fields </li>
  * </ul>
- * Upon coming back to {@link com.example.i5.boards.ui.board.BoardActivity} with
- * {@link #RESULT_OK}, board screen will be refreshed and data loaded again
  */
-public class NewIssueActivity extends AppCompatActivity {
+public class NewIssueActivity extends NewItemActivity {
     final static private String TAG = NewIssueActivity.class.getSimpleName();
 
     private Spinner boardSpinner;
@@ -185,26 +181,8 @@ public class NewIssueActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    /**
-     * Called when {@link R.id#issueDoneButton} is clicked. Defined as
-     * an onClick action in xml
-     * Checks if fields are valid and lets the flow continue in case they are
-     * @param view View that was clicked (done button)
-     */
-    public void onDone(View view) {
-        if (areFieldsValid()) {
-            finishEditing();
-        } else {
-            Toast.makeText(this, "Some fields are empty",
-                    Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    /**
-     * @return whether all fields were filled correctly and data can be processed
-     * TODO add more checks
-     */
-    private boolean areFieldsValid() {
+    @Override
+    protected boolean areFieldsValid() {
         boolean valid = true;
 
         if (nameText.getText().toString().trim().isEmpty()) {
@@ -216,26 +194,8 @@ public class NewIssueActivity extends AppCompatActivity {
         return valid;
     }
 
-    /**
-     * Call when user finished editing and his data is validated and ready to be processed.
-     * Saves data to database.
-     * Sets the result returned to the activity's caller to {@link #RESULT_OK}
-     * Finishes the activity.
-     */
-    private void finishEditing() {
-        ALog.d(TAG, ALog.UI, "Setting result and finishing activity");
-
-        saveToDatabase();
-        Intent data = new Intent();
-        setResult(RESULT_OK, data);
-        finish();
-    }
-
-    /**
-     * Take data user filled in from the UI and save it to the database.
-     * Assumes field validity was already established.
-     */
-    private void saveToDatabase() {
+    @Override
+    protected void saveToDatabase() {
         ALog.d(TAG, ALog.UI, "Taking data from ui and saving to database");
 
         Cursor boardItem = (Cursor) boardSpinner.getSelectedItem();
@@ -259,6 +219,11 @@ public class NewIssueActivity extends AppCompatActivity {
                 .setRemaining(remaining);
 
         issue.save();
+    }
+
+    @Override
+    protected String getLogTag() {
+        return TAG;
     }
 
     /**

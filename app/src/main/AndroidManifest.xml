@@ -18,9 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.newIssue.NewIssueActivity" />
-        <activity android:name=".ui.newStory.NewStoryActivity" />
-        <activity android:name=".ui.newBoard.NewBoardActivity" />
+        <activity android:name=".ui.newItem.NewIssueActivity" />
+        <activity android:name=".ui.newItem.NewStoryActivity" />
+        <activity android:name=".ui.newItem.NewBoardActivity" />
         <activity android:name=".data.db.AndroidDatabaseManager" />
         <activity
             android:name=".ui.debugScreen.DebugScreenActivity"

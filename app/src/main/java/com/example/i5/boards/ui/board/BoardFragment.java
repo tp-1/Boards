@@ -22,8 +22,10 @@ import com.example.i5.boards.data.Story;
  *         putting them in it's status columns</li>
  *     </ul>
  *     <li>Board is redrawn when user adds another issue</li>
- *
  * </ul>
+ *
+ * Upon coming back from {@link com.example.i5.boards.ui.newItem.NewIssueActivity} with
+ * {@link android.app.Activity#RESULT_OK}, board screen will be refreshed and data loaded again
  */
 public class BoardFragment extends Fragment {
     /**

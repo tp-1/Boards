@@ -1,4 +1,4 @@
-package com.example.i5.boards.ui.newStory;
+package com.example.i5.boards.ui.newItem;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,7 +15,14 @@ import com.example.i5.boards.data.Story;
 
 import org.jetbrains.annotations.NotNull;
 
-public class NewStoryActivity extends AppCompatActivity {
+/**
+ * Activity for creating(/editing?) a new story.
+ * Contains:
+ * <ul>
+ *     <li> Widgets to fill in {@link Story} fields </li>
+ * </ul>
+ */
+public class NewStoryActivity extends NewItemActivity {
     final static private String TAG = NewStoryActivity.class.getSimpleName();
 
     private EditText mNameText;
@@ -29,51 +36,13 @@ public class NewStoryActivity extends AppCompatActivity {
 
         ALog.v(TAG, ALog.UI, "Creating NewStoryActivity");
 
-
         mNameText = (EditText)findViewById(R.id.storyNameText);
         mDescriptionText = (EditText)findViewById(R.id.storyDescText);
         mDoneButton = (Button)findViewById(R.id.storyDoneButton);
-
-        mDoneButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onDone();
-            }
-        });
     }
 
-    /**
-     * Checks if fields are valid and lets the flow continue in case they are
-     */
-    private void onDone() {
-        if (areFieldsValid()) {
-            finishEditing();
-        } else {
-            Toast.makeText(this, "Some fields are empty",
-                    Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    /**
-     * Call when user finished editing and his data is validated and ready to be processed.
-     * Saves data to database.
-     * Sets the result returned to the activity's caller to {@link #RESULT_OK}
-     * Finishes the activity.
-     */
-    private void finishEditing() {
-        ALog.d(TAG, ALog.UI, "Setting result and finishing activity");
-
-        saveToDatabase();
-        Intent data = new Intent();
-        setResult(RESULT_OK, data);
-        finish();
-    }
-
-    /**
-     * Take data user filled in from the UI and save it to the database.
-     * Assumes field validity was already established.
-     */
-    private void saveToDatabase() {
+    @Override
+    protected void saveToDatabase() {
         ALog.d(TAG, ALog.UI, "Taking data from ui and saving to database");
 
         String name = mNameText.getText().toString();
@@ -86,17 +55,19 @@ public class NewStoryActivity extends AppCompatActivity {
         story.save();
     }
 
-    /**
-     * @return whether all fields were filled correctly and data can be processed
-     * TODO add more checks
-     */
-    private boolean areFieldsValid() {
+    @Override
+    protected boolean areFieldsValid() {
         boolean valid = true;
         if (mNameText.getText().toString().trim().isEmpty()) {
             valid = false;
         }
         ALog.d(TAG, ALog.UI, "Validating fields; valid = %b", valid);
         return valid;
+    }
+
+    @Override
+    protected String getLogTag() {
+        return TAG;
     }
 
     /**
