@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 
 import com.example.i5.boards.ALog;
+import com.example.i5.boards.data.db.DBOperations;
 import com.example.i5.boards.data.db.TableInfos;
 
 /**
@@ -43,7 +44,7 @@ public class Board extends TableRow {
      * @return Cursor over all rows from the boards table
      */
     static public Cursor getAll() {
-        return mDbOperations.query(TableInfos.BoardTable.NAME);
+        return DBOperations.query(TableInfos.BoardTable.NAME);
     }
 
     @Override
@@ -51,7 +52,7 @@ public class Board extends TableRow {
         ContentValues cv = new ContentValues(2);
         cv.put(TableInfos.BoardTable.ColumnNames.NAME, mName);
         cv.put(TableInfos.BoardTable.ColumnNames.START_TIME, mStartTime);
-        mDbOperations.save(TableInfos.BoardTable.NAME, cv);
+        DBOperations.save(TableInfos.BoardTable.NAME, cv);
     }
 
     @Override

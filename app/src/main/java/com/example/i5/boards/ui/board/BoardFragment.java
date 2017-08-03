@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import com.example.i5.boards.ALog;
 import com.example.i5.boards.R;
 import com.example.i5.boards.data.Story;
+import com.example.i5.boards.data.db.DBOperations;
 
 /**
  * Fragment for managing the selected Board with list of it's stories and issues.
@@ -47,6 +48,8 @@ public class BoardFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         ALog.v(TAG, ALog.UI, "View created for BoardFragment");
+
+        DBOperations.setupDatabase(getActivity());
         //mBoardItems = (ListView) view.findViewById(R.id.boardItems);
         // mBoardItems.setAdapter(new StoryAdapter(this, , 0));
 

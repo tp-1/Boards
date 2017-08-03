@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.support.annotation.Nullable;
 
 import com.example.i5.boards.ALog;
+import com.example.i5.boards.data.db.DBOperations;
 import com.example.i5.boards.data.db.TableInfos;
 
 import java.util.Random;
@@ -68,7 +69,7 @@ public class Story extends TableRow {
     // TODO: 09-Jul-17 add annotation for db access?
     @Nullable
     public static Story restoreFromId(long id) {
-        Cursor c = mDbOperations.query(TableInfos.StoryTable.NAME, id);
+        Cursor c = DBOperations.query(TableInfos.StoryTable.NAME, id);
         Story story = null;
         if (c.moveToNext()) {
             story = new Story(c);
@@ -85,7 +86,7 @@ public class Story extends TableRow {
      * @return Cursor over all rows from the story table
      */
     static public Cursor getAll() {
-        return mDbOperations.query(TableInfos.StoryTable.NAME);
+        return DBOperations.query(TableInfos.StoryTable.NAME);
     }
 
     @Override
@@ -93,7 +94,7 @@ public class Story extends TableRow {
         ContentValues cv = new ContentValues(2);
         cv.put(TableInfos.StoryTable.ColumnNames.NAME, name);
         cv.put(TableInfos.StoryTable.ColumnNames.DESCRIPTION, description);
-        mDbOperations.save(TableInfos.StoryTable.NAME, cv);
+        DBOperations.save(TableInfos.StoryTable.NAME, cv);
     }
 
     @Override
@@ -115,7 +116,7 @@ public class Story extends TableRow {
     public Cursor getIssues() {
         String selection = TableInfos.IssueTable.ColumnNames.STORY_KEY + " = ?";
         String[] selectionArgs = new String[]{Long.toString(id)};
-        return mDbOperations.query(TableInfos.IssueTable.NAME, null,
+        return DBOperations.query(TableInfos.IssueTable.NAME, null,
                 selection, selectionArgs);
     }
 
@@ -130,7 +131,7 @@ public class Story extends TableRow {
         String selection = TableInfos.IssueTable.ColumnNames.STORY_KEY + " = ? AND " +
                 TableInfos.IssueTable.ColumnNames.BOARD_KEY + " = ?";
         String[] selectionArgs = new String[]{Long.toString(id), Long.toString(boardId)};
-        return mDbOperations.query(TableInfos.IssueTable.NAME, null,
+        return DBOperations.query(TableInfos.IssueTable.NAME, null,
                 selection, selectionArgs);
     }
 

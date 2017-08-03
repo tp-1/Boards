@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 
 import com.example.i5.boards.ALog;
+import com.example.i5.boards.data.db.DBOperations;
 import com.example.i5.boards.data.db.TableInfos;
 
 /**
@@ -72,7 +73,7 @@ public class Issue extends TableRow {
         cv.put(TableInfos.IssueTable.ColumnNames.ESTIMATED, estimated);
         cv.put(TableInfos.IssueTable.ColumnNames.LOGGED, logged);
         cv.put(TableInfos.IssueTable.ColumnNames.REMAINING, remaining);
-        mDbOperations.save(TableInfos.IssueTable.NAME, cv);
+        DBOperations.save(TableInfos.IssueTable.NAME, cv);
     }
 
     /**
@@ -80,7 +81,7 @@ public class Issue extends TableRow {
      * @return Cursor over all rows from the issue table
      */
     static public Cursor getAll() {
-        return mDbOperations.query(TableInfos.IssueTable.NAME);
+        return DBOperations.query(TableInfos.IssueTable.NAME);
     }
 
     public long getId() {

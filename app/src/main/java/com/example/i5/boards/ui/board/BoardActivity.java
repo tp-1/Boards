@@ -36,9 +36,6 @@ public class BoardActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // Don't move this. Don't breathe into this. Don't think about this.
-        DBOperations.setDatabaseContext(getApplication());
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_board);
 

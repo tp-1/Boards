@@ -14,18 +14,8 @@ import com.example.i5.boards.data.db.DBOperations;
 abstract class TableRow {
     final static private String TAG = TableRow.class.getSimpleName();
 
-    protected static final DBOperations mDbOperations;
-
-    static {
-        // Must be executed after BoardActivity's onCreate()
-        // Should be fine, since neither TableRow nor it's
-        // child classes are used there
-        // Srsly?
-        mDbOperations = DBOperations.getInstance();
-    }
-
     /**
-     * Saves this row to db. Uses {@link #mDbOperations}
+     * Saves this row to db. Uses {@link DBOperations}
      */
     abstract public void save();
 

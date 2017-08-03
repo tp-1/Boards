@@ -13,19 +13,32 @@ import java.util.ArrayList;
 
 /**
  * A helper object to create, open, and/or manage a database.
+ * Singleton.
  *
  * The database is not actually created or opened until one
  * of getWritableDatabase() or getReadableDatabase() is called.
  */
 class DBHelper extends SQLiteOpenHelper {
     final static private String TAG = DBHelper.class.getSimpleName();
+    static private DBHelper mInstance = null;
 
-    static final String DATABASE_NAME = "boards.db";
-    static final int DATABASE_VERSION = 1;
+    final static private String DATABASE_NAME = "boards.db";
+    final static private int DATABASE_VERSION = 1;
 
-    DBHelper(Context context) {
+    private DBHelper(Context context) {
         super(context, DATABASE_NAME , null, DATABASE_VERSION);
         ALog.d(TAG, ALog.DATA, "DBHelper object constructed");
+    }
+
+    /**
+     * Get or create instance of {@link DBHelper}. This class is a singleton.
+     * @param context to use to open or create the database. Will use application context
+     */
+    /* package */ static DBHelper getInstance(Context context) {
+        if (mInstance == null) {
+            mInstance = new DBHelper(context.getApplicationContext());
+        }
+        return mInstance;
     }
 
     @Override
