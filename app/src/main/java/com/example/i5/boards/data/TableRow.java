@@ -7,7 +7,6 @@ import com.example.i5.boards.data.db.DBOperations;
 
 /**
  * Superclass for classes representing rows from tables.
- * Statically instantiates {@link DBOperations} for the first time
  * Has some common methods.
  * For details on tables, see: {@link com.example.i5.boards.data.db.TableInfos}
  */

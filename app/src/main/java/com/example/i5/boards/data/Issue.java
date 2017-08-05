@@ -38,7 +38,6 @@ public class Issue extends TableRow {
     }
 
     public Issue() {
-
     }
 
     public Issue(Cursor cursor) {
@@ -92,72 +91,64 @@ public class Issue extends TableRow {
         return boardKey;
     }
 
-    public Issue setBoardKey(long boardKey) {
+    public void setBoardKey(long boardKey) {
         this.boardKey = boardKey;
-        return this;
     }
 
     public long getStoryKey() {
         return storyKey;
     }
 
-    public Issue setStoryKey(long storyKey) {
+    public void setStoryKey(long storyKey) {
         this.storyKey = storyKey;
-        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public Issue setName(String name) {
+    public void setName(String name) {
         this.name = name;
-        return this;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public Issue setDescription(String description) {
+    public void setDescription(String description) {
         this.description = description;
-        return this;
     }
 
     public Status getStatus() {
         return status;
     }
 
-    public Issue setStatus(Status status) {
+    public void setStatus(Status status) {
         this.status = status;
-        return this;
     }
 
     public long getEstimated() {
         return estimated;
     }
 
-    public Issue setEstimated(long estimated) {
+    public void setEstimated(long estimated) {
         this.estimated = estimated;
-        return this;
     }
 
     public long getLogged() {
         return logged;
     }
 
-    public Issue setLogged(long logged) {
+    public void setLogged(long logged) {
         this.logged = logged;
-        return this;
     }
 
     public long getRemaining() {
         return remaining;
     }
 
-    public Issue setRemaining(long remaining) {
+    public void setRemaining(long remaining) {
         this.remaining = remaining;
-        return this;
     }
 
     // TODO: 13-Jul-17 write toString method
