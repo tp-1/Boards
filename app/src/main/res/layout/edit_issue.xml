@@ -115,12 +115,14 @@
 
             <TextView
                 android:text="@string/edit_issue_estimated_label"
+                android:labelFor="@+id/estimatedText"
                 android:id="@+id/estimatedLabel"
                 style="@style/editIssueLabels" />
 
-            <NumberPicker
-                android:id="@+id/estimatedPicker"
-                style="@style/editIssueValues" />
+            <EditText
+                android:id="@id/estimatedText"
+                style="@style/editIssueValues"
+                android:inputType="number" />
         </LinearLayout>
 
         <LinearLayout
@@ -130,12 +132,14 @@
 
             <TextView
                 android:text="@string/edit_text_remaining_label"
+                android:labelFor="@+id/remainingText"
                 android:id="@+id/remainingLabel"
                 style="@style/editIssueLabels" />
 
-            <NumberPicker
-                android:id="@+id/remainingPicker"
-                style="@style/editIssueValues" />
+            <EditText
+                android:id="@id/remainingText"
+                style="@style/editIssueValues"
+                android:inputType="number" />
         </LinearLayout>
         <Button
             android:id="@+id/issueDoneButton"

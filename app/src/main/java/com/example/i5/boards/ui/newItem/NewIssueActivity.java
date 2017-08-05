@@ -3,17 +3,14 @@ package com.example.i5.boards.ui.newItem;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.NumberPicker;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.i5.boards.ALog;
 import com.example.i5.boards.R;
@@ -21,6 +18,7 @@ import com.example.i5.boards.data.Board;
 import com.example.i5.boards.data.Issue;
 import com.example.i5.boards.data.Story;
 import com.example.i5.boards.data.db.TableInfos;
+import com.example.i5.boards.ui.UIUtils;
 import com.example.i5.boards.ui.debugScreen.DebugScreenActivity;
 
 import org.jetbrains.annotations.NotNull;
@@ -40,14 +38,14 @@ import org.jetbrains.annotations.NotNull;
 public class NewIssueActivity extends NewItemActivity {
     final static private String TAG = NewIssueActivity.class.getSimpleName();
 
-    private Spinner boardSpinner;
-    private Spinner storySpinner;
-    private EditText nameText;
-    private EditText descText;
-    private Spinner statusSpinner;
-    private NumberPicker estimatedPicker;
-    private NumberPicker remainingPicker;
-    private Button doneButton;
+    private Spinner mBoardSpinner;
+    private Spinner mStorySpinner;
+    private EditText mNameText;
+    private EditText mDescText;
+    private Spinner mStatusSpinner;
+    private EditText mEstimatedText;
+    private EditText mRemainingText;
+    private Button mDoneButton;
 
     private SimpleCursorAdapter boardSpinnerAdapter;
     private SimpleCursorAdapter storySpinnerAdapter;
@@ -59,14 +57,14 @@ public class NewIssueActivity extends NewItemActivity {
 
         ALog.v(TAG, ALog.UI, "Creating NewIssueActivity");
 
-        boardSpinner = (Spinner)findViewById(R.id.boardSpinner);
-        storySpinner = (Spinner)findViewById(R.id.storySpinner);
-        nameText = (EditText)findViewById(R.id.nameText);
-        descText = (EditText)findViewById(R.id.descText);
-        statusSpinner = (Spinner)findViewById(R.id.statusSpinner);
-        estimatedPicker = (NumberPicker)findViewById(R.id.estimatedPicker);
-        remainingPicker = (NumberPicker)findViewById(R.id.remainingPicker);
-        doneButton = (Button)findViewById(R.id.issueDoneButton);
+        mBoardSpinner = (Spinner)findViewById(R.id.boardSpinner);
+        mStorySpinner = (Spinner)findViewById(R.id.storySpinner);
+        mNameText = (EditText)findViewById(R.id.nameText);
+        mDescText = (EditText)findViewById(R.id.descText);
+        mStatusSpinner = (Spinner)findViewById(R.id.statusSpinner);
+        mEstimatedText = (EditText)findViewById(R.id.estimatedText);
+        mRemainingText = (EditText)findViewById(R.id.remainingText);
+        mDoneButton = (Button)findViewById(R.id.issueDoneButton);
 
         setBoardSpinnerAdapter();
         setStorySpinnerAdapter();
@@ -77,7 +75,7 @@ public class NewIssueActivity extends NewItemActivity {
     }
 
     /**
-     * Set the adapter for the {@link #statusSpinner}, which will list status values
+     * Set the adapter for the {@link #mStatusSpinner}, which will list status values
      * of an issue ({@link Issue.Status})
      */
     private void setStatusSpinnerAdapter() {
@@ -85,25 +83,25 @@ public class NewIssueActivity extends NewItemActivity {
                 android.R.layout.simple_spinner_item, android.R.id.text1,
                 Issue.Status.values());
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        statusSpinner.setAdapter(spinnerAdapter);
+        mStatusSpinner.setAdapter(spinnerAdapter);
 
         ALog.v(TAG, ALog.UI, "Set status spinner adapter");
     }
 
     /**
-     * Set the adapter for the {@link #boardSpinner}, which will list board names
+     * Set the adapter for the {@link #mBoardSpinner}, which will list board names
      */
     private void setBoardSpinnerAdapter() {
-        boardSpinnerAdapter = setCursorSpinnerAdapter(boardSpinner, Board.getAll(),
+        boardSpinnerAdapter = setCursorSpinnerAdapter(mBoardSpinner, Board.getAll(),
                 TableInfos.BoardTable.ColumnNames.NAME);
         ALog.v(TAG, ALog.UI, "Set board spinner adapter");
     }
 
     /**
-     * Set the adapter for the {@link #storySpinner}, which will list story names
+     * Set the adapter for the {@link #mStorySpinner}, which will list story names
      */
     private void setStorySpinnerAdapter() {
-        storySpinnerAdapter = setCursorSpinnerAdapter(storySpinner, Story.getAll(),
+        storySpinnerAdapter = setCursorSpinnerAdapter(mStorySpinner, Story.getAll(),
                 TableInfos.StoryTable.ColumnNames.NAME);
         ALog.v(TAG, ALog.UI, "Set story spinner adapter");
     }
@@ -185,9 +183,8 @@ public class NewIssueActivity extends NewItemActivity {
     protected boolean areFieldsValid() {
         boolean valid = true;
 
-        if (nameText.getText().toString().trim().isEmpty()) {
-            valid = false;
-        } else if (descText.getText().toString().trim().isEmpty()) {
+        if (UIUtils.isFieldEmpty(mNameText) || UIUtils.isFieldEmpty(mDescText) ||
+                UIUtils.isFieldEmpty(mEstimatedText) || UIUtils.isFieldEmpty(mRemainingText)) {
             valid = false;
         }
         ALog.d(TAG, ALog.UI, "Validating fields; valid = %b", valid);
@@ -198,16 +195,16 @@ public class NewIssueActivity extends NewItemActivity {
     protected void saveToDatabase() {
         ALog.d(TAG, ALog.UI, "Taking data from ui and saving to database");
 
-        Cursor boardItem = (Cursor) boardSpinner.getSelectedItem();
-        Cursor storyItem = (Cursor) storySpinner.getSelectedItem();
+        Cursor boardItem = (Cursor) mBoardSpinner.getSelectedItem();
+        Cursor storyItem = (Cursor) mStorySpinner.getSelectedItem();
 
         int boardKey = boardItem.getInt(0); // FIXME: 25-Jun-17 constant
         int storyKey = storyItem.getInt(0); // FIXME: 25-Jun-17 constant
-        String name = nameText.getText().toString();
-        String desc = descText.getText().toString();
-        Issue.Status status = (Issue.Status)statusSpinner.getSelectedItem();
-        long estimated = estimatedPicker.getValue();
-        long remaining = remainingPicker.getValue();
+        String name = mNameText.getText().toString();
+        String desc = mDescText.getText().toString();
+        Issue.Status status = (Issue.Status) mStatusSpinner.getSelectedItem();
+        long estimated = Long.parseLong(mEstimatedText.getText().toString());
+        long remaining = Long.parseLong(mRemainingText.getText().toString());
 
         Issue issue = new Issue();
         issue.setBoardKey(boardKey)
