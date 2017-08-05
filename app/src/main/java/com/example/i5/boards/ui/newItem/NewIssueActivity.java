@@ -207,13 +207,13 @@ public class NewIssueActivity extends NewItemActivity {
         long remaining = Long.parseLong(mRemainingText.getText().toString());
 
         Issue issue = new Issue();
-        issue.setBoardKey(boardKey)
-                .setStoryKey(storyKey)
-                .setName(name)
-                .setDescription(desc)
-                .setStatus(status)
-                .setEstimated(estimated)
-                .setRemaining(remaining);
+        issue.setBoardKey(boardKey);
+        issue.setStoryKey(storyKey);
+        issue.setName(name);
+        issue.setDescription(desc);
+        issue.setStatus(status);
+        issue.setEstimated(estimated);
+        issue.setRemaining(remaining);
 
         issue.save();
     }
