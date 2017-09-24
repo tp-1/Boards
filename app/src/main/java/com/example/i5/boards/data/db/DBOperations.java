@@ -4,6 +4,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.support.annotation.RestrictTo;
+import android.support.annotation.VisibleForTesting;
 
 import com.example.i5.boards.ALog;
 
@@ -15,7 +18,7 @@ import java.util.Arrays;
 public class DBOperations {
     final static private String TAG = DBOperations.class.getSimpleName();
 
-    private static DBHelper sDbHelper = null;
+    private static SQLiteOpenHelper sDbHelper = null;
 
     /**
      * Create or save {@link DBHelper} instance to be used by operations performed with this class.
@@ -24,6 +27,15 @@ public class DBOperations {
     public static void setupDatabase(Context context) {
         ALog.d(TAG, ALog.DATA, "Setting up database");
         sDbHelper = DBHelper.getInstance(context);
+    }
+
+    /**
+     * Call instead of {@link #setupDatabase(Context)} to setup fake database helper for tests.
+     * Only use for tests that need a non-mock database, but which one - it's not important.
+     */
+    @RestrictTo(RestrictTo.Scope.TESTS)
+    /* package */ static void setupDatabaseForTests(SQLiteOpenHelper dbHelper) {
+        sDbHelper = dbHelper;
     }
 
     /**

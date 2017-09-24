@@ -1,11 +1,13 @@
 package com.example.i5.boards.data.db;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.support.annotation.RestrictTo;
 
 import com.example.i5.boards.ALog;
 
@@ -20,14 +22,25 @@ import java.util.ArrayList;
  */
 class DBHelper extends SQLiteOpenHelper {
     final static private String TAG = DBHelper.class.getSimpleName();
-    static private DBHelper mInstance = null;
+    static private DBHelper sInstance = null;
 
     final static private String DATABASE_NAME = "boards.db";
     final static private int DATABASE_VERSION = 1;
 
-    private DBHelper(Context context) {
+    private DBHelper(Context context, String dbName, int dbVersion) {
         super(context, DATABASE_NAME , null, DATABASE_VERSION);
         ALog.d(TAG, ALog.DATA, "DBHelper object constructed");
+    }
+
+    /**
+     * TODO maybe use for instrumentation tests
+     * Construct a DBHelper object for tests, with an in memory database ( = New database is
+     * created purely in memory. The database ceases to exist as soon as the database connection
+     * is closed.)
+     */
+    @RestrictTo(RestrictTo.Scope.TESTS)
+    protected DBHelper(Context context) {
+        this(context, /*in-memory db*/ null, DATABASE_VERSION);
     }
 
     /**
@@ -35,10 +48,11 @@ class DBHelper extends SQLiteOpenHelper {
      * @param context to use to open or create the database. Will use application context
      */
     /* package */ static DBHelper getInstance(Context context) {
-        if (mInstance == null) {
-            mInstance = new DBHelper(context.getApplicationContext());
+        if (sInstance == null) {
+            sInstance = new DBHelper(context.getApplicationContext(),
+                    DATABASE_NAME, DATABASE_VERSION);
         }
-        return mInstance;
+        return sInstance;
     }
 
     @Override
@@ -108,8 +122,9 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * Added by {@link AndroidDatabaseManager}
+     * Didn't write this. Added by {@link AndroidDatabaseManager}
      */
+    @SuppressWarnings("all")
     public ArrayList<Cursor> getData(String Query){
         ALog.d(TAG, ALog.DATA, "AndroidDatabaseManager's getData() method called");
 

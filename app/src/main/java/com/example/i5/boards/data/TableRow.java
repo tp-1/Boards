@@ -5,6 +5,8 @@ import android.database.Cursor;
 import com.example.i5.boards.ALog;
 import com.example.i5.boards.data.db.DBOperations;
 
+import org.jetbrains.annotations.Contract;
+
 /**
  * Superclass for classes representing rows from tables.
  * Has some common methods.
@@ -30,9 +32,9 @@ abstract class TableRow {
      * since I'm pretending to override it.
      * @return Cursor over all rows from the table
      */
-    @SuppressWarnings("SameReturnValue")
+    @Contract(" -> fail")
     static public Cursor getAll() {
-        ALog.w(TAG, ALog.DATA, "Using superclass' getAll() method that should be 'overriden'");
-        return null;
+        throw new UnsupportedOperationException(
+                "Using superclass' getAll() method that should be 'overriden'");
     }
 }
