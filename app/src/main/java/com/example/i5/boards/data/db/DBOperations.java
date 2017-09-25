@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.provider.BaseColumns;
 import android.support.annotation.RestrictTo;
 import android.support.annotation.VisibleForTesting;
 import android.support.annotation.WorkerThread;
@@ -70,8 +71,7 @@ public class DBOperations {
      */
     @WorkerThread
     public static Cursor query(String tableName, long id) {
-        // FIXME: 10-Jul-17 omg, you have an inner class called ColumnNamesUniversal
-        String selection = TableInfos.ColumnNamesUniversal.ID + " = ?";
+        String selection = BaseColumns._ID + " = ?";
         String[] selectionArgs = new String[]{Long.toString(id)};
         return query(tableName, null, selection, selectionArgs);
     }
