@@ -27,17 +27,17 @@ class StoryOnBoard {
       * Story this UI object represents. {@link StoryOnBoard} will only
       * fetch issues that belong to the board it's displayed on ({@link #mBoardId})
       */
-    private Story mStory;
+    private final Story mStory;
      /** Board this {@link StoryOnBoard} is being created on **/
-    private long mBoardId;
+    private final long mBoardId;
 
-    private TextView mStoryNameLabel;
-    private ViewGroup mToDoColumnItemsLayout;
-    private ViewGroup mProgressColumnItemsLayout;
-    private ViewGroup mDoneColumnItemsLayout;
+    private final TextView mStoryNameLabel;
+    private final ViewGroup mToDoColumnItemsLayout;
+    private final ViewGroup mProgressColumnItemsLayout;
+    private final ViewGroup mDoneColumnItemsLayout;
 
      /** List of {@link IssueOnBoard} objects that will be shown in this {@link StoryOnBoard}) **/
-    private ArrayList<IssueOnBoard> issueItemList = new ArrayList<>();
+    private final ArrayList<IssueOnBoard> issueItemList = new ArrayList<>();
 
      /**
       * Constructs a new {@link StoryOnBoard} object

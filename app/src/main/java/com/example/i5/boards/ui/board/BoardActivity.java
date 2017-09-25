@@ -12,7 +12,6 @@ import android.view.MenuItem;
 
 import com.example.i5.boards.ALog;
 import com.example.i5.boards.R;
-import com.example.i5.boards.data.db.DBOperations;
 import com.example.i5.boards.ui.newItem.NewIssueActivity;
 
 /**

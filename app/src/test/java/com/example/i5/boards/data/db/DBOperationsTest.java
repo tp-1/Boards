@@ -33,8 +33,8 @@ public class DBOperationsTest {
     public static class DBOperationsWithSetupTest {
         private SQLiteOpenHelper mFakeDbHelper;
 
-        private long preSavedRowId = 1;
-        private String preSavedRowName = "testRow1";
+        final private long preSavedRowId = 1;
+        final private String preSavedRowName = "testRow1";
 
         @Before
         public void setUp() {

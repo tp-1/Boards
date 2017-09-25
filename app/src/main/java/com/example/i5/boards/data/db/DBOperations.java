@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 import android.support.annotation.RestrictTo;
-import android.support.annotation.VisibleForTesting;
 import android.support.annotation.WorkerThread;
 
 import com.example.i5.boards.ALog;

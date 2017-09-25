@@ -21,6 +21,7 @@ public class ALog {
     private final static boolean VERBOSE_LOGGING = true;
 
     // Filters
+    @SuppressWarnings("PointlessBitwiseExpression")
     public final static int UI = 1 << 0;
     public final static int DATA = 1 << 1;
 

@@ -23,6 +23,7 @@ public abstract class NewItemActivity extends AppCompatActivity {
      * Checks if fields are valid and lets the flow continue in case they are
      * @param view View that was clicked (done button)
      */
+    @SuppressWarnings("UnusedParameters")
     public void onDone(View view) {
         if (areFieldsValid()) {
             finishEditing();

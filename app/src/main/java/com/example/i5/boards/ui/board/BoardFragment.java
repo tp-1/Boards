@@ -31,7 +31,7 @@ import com.example.i5.boards.data.db.DBOperations;
 public class BoardFragment extends Fragment {
     /**
      * Tag used for logs. Tag for handling this fragment with FragmentManager is
-     * declared in the xml (nevermind, deleted it. Still, should be followed)
+     * declared in the xml (never mind, deleted it. Still, should be followed)
      */
     private static final String TAG = BoardFragment.class.getSimpleName();
 

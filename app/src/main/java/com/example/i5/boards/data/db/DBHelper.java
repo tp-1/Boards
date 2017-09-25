@@ -1,6 +1,5 @@
 package com.example.i5.boards.data.db;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.MatrixCursor;
@@ -28,7 +27,7 @@ class DBHelper extends SQLiteOpenHelper {
     final static private int DATABASE_VERSION = 1;
 
     private DBHelper(Context context, String dbName, int dbVersion) {
-        super(context, DATABASE_NAME , null, DATABASE_VERSION);
+        super(context, dbName , null, dbVersion);
         ALog.d(TAG, ALog.DATA, "DBHelper object constructed");
     }
 
@@ -66,7 +65,7 @@ class DBHelper extends SQLiteOpenHelper {
      * Create board table
      */
     private void createBoardTable(SQLiteDatabase db) {
-        String columns = TableInfos.BoardTable.ColumnNames.ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+        String columns = TableInfos.BoardTable.ColumnNames._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 TableInfos.BoardTable.ColumnNames.NAME + " VARCHAR(100) NOT NULL, " +
                 TableInfos.BoardTable.ColumnNames.START_TIME + " INTEGER";
         String createTable = "CREATE TABLE " + TableInfos.BoardTable.NAME +
@@ -80,7 +79,7 @@ class DBHelper extends SQLiteOpenHelper {
      * Create story table
      */
     private void createStoryTable(SQLiteDatabase db) {
-        String columns = TableInfos.StoryTable.ColumnNames.ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+        String columns = TableInfos.StoryTable.ColumnNames._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 TableInfos.StoryTable.ColumnNames.NAME + " VARCHAR(100) NOT NULL, " +
                 TableInfos.StoryTable.ColumnNames.DESCRIPTION + " VARCHAR(500)";
         String createTable = "CREATE TABLE " + TableInfos.StoryTable.NAME +
@@ -94,7 +93,7 @@ class DBHelper extends SQLiteOpenHelper {
      * Create issue table
      */
     private void createIssueTable(SQLiteDatabase db) {
-        String columns = TableInfos.IssueTable.ColumnNames.ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+        String columns = TableInfos.IssueTable.ColumnNames._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 TableInfos.IssueTable.ColumnNames.BOARD_KEY + " INTEGER REFERENCES " + TableInfos.BoardTable.NAME + ", " +
                 TableInfos.IssueTable.ColumnNames.STORY_KEY + " INTEGER REFERENCES " + TableInfos.StoryTable.NAME + ", " +
                 TableInfos.IssueTable.ColumnNames.NAME + " VARCHAR(100) NOT NULL, " +

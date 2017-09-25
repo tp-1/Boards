@@ -24,7 +24,8 @@
 
                 <EditText
                     android:id="@id/boardNameText"
-                    style="@style/editIssueValues" />
+                    style="@style/editIssueValues"
+                    android:inputType="text" />
             </LinearLayout>
 
             <LinearLayout

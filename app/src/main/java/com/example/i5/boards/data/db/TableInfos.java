@@ -1,28 +1,24 @@
 package com.example.i5.boards.data.db;
 
+import android.provider.BaseColumns;
+
 /**
  * Information on tables. Maybe separate them in different classes?<br/>
  * Members follow format:
  * <pre>
  * class Table... {
  *     NAME = ...
- *     class ColumnNames extends ColumnNamesUniversal {
+ *     class ColumnNames implements BaseColumns {
  *         ...
  *     }
  * }
  * </pre>
  */
 public class TableInfos {
-
-    static class ColumnNamesUniversal {
-        /** Id column of a row that every table should have */
-        static final String ID = "_id";
-    }
-
     public static class BoardTable {
         public static final String NAME = "Board";
 
-        public static class ColumnNames extends ColumnNamesUniversal{
+        public static class ColumnNames implements BaseColumns {
             /** Name of the board. Doesn't have to be unique */
             public static final String NAME = "name";
             /** Start time of the sprint represented by this board. Number of millis since epoch  */
@@ -34,7 +30,7 @@ public class TableInfos {
     public static class StoryTable {
         public static final String NAME = "Story";
 
-        public static class ColumnNames extends ColumnNamesUniversal {
+        public static class ColumnNames implements BaseColumns {
             /** Name of the story. Doesn't have to be unique */
             public static final String NAME = "name";
             /** Description of the story. */
@@ -45,7 +41,7 @@ public class TableInfos {
     public static class IssueTable {
         public static final String NAME = "Issue";
 
-        public static class ColumnNames extends ColumnNamesUniversal {
+        public static class ColumnNames implements BaseColumns {
             /** "foreign key" to board table */
             public static final String BOARD_KEY = "board_key";
             /** "foreign key" to story table */
@@ -62,7 +58,7 @@ public class TableInfos {
             /**
              * Time remaining on the issue. In millis.
              * <p>
-             *     {@value #REMAINING} = {@value #ESTIMATED} - {@value #LOGGED},
+             *     REMAINING = {@value #ESTIMATED} - {@value #LOGGED},
              *     if >= 0, otherwise 0
              * </p>
              */

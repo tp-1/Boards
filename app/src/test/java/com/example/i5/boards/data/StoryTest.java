@@ -7,7 +7,6 @@ import com.example.i5.boards.data.db.TableInfos;
 
 import org.junit.After;
 import org.junit.Before;
-import org.robolectric.RuntimeEnvironment;
 
 /**
  * {@inheritDoc}

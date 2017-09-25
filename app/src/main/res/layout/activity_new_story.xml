@@ -24,7 +24,8 @@
 
                 <EditText
                     android:id="@id/storyNameText"
-                    style="@style/editIssueValues" />
+                    style="@style/editIssueValues"
+                    android:inputType="text" />
             </LinearLayout>
 
             <LinearLayout
@@ -40,7 +41,8 @@
 
                 <EditText
                     android:id="@id/storyDescText"
-                    style="@style/editIssueValues" />
+                    style="@style/editIssueValues"
+                    android:inputType="text" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

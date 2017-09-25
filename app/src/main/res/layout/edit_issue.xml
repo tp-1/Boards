@@ -30,7 +30,8 @@
                     android:layout_height="wrap_content"
                     android:src="@android:drawable/ic_menu_add"
                     android:layout_weight="20"
-                    android:onClick="createNewBoard"/>
+                    android:onClick="createNewBoard"
+                    android:contentDescription="@string/add_board" />
             </LinearLayout>
         </LinearLayout>
 
@@ -57,7 +58,8 @@
                     android:layout_height="wrap_content"
                     android:src="@android:drawable/ic_menu_add"
                     android:layout_weight="20"
-                    android:onClick="createNewStory"/>
+                    android:onClick="createNewStory"
+                    android:contentDescription="@string/add_story" />
             </LinearLayout>
         </LinearLayout>
 
@@ -74,7 +76,8 @@
 
             <EditText
                 android:id="@id/nameText"
-                style="@style/editIssueValues" />
+                style="@style/editIssueValues"
+                android:inputType="text" />
         </LinearLayout>
 
         <LinearLayout
@@ -90,7 +93,8 @@
 
             <EditText
                 android:id="@id/descText"
-                style="@style/editIssueValues" />
+                style="@style/editIssueValues"
+                android:inputType="text" />
         </LinearLayout>
 
         <LinearLayout

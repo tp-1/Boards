@@ -19,10 +19,10 @@ class IssueOnBoard {
     private static final String TAG = IssueOnBoard.class.getSimpleName();
 
     /** Issue this UI object represents **/
-    private Issue mIssue;
+    private final Issue mIssue;
 
     /** Status column in {@link StoryOnBoard} that this issue belongs to **/
-    private ViewGroup mParentView;
+    private final ViewGroup mParentView;
     private TextView mNameLabel;
     private TextView mDescriptionLabel;
     private TextView mRemainingLabel;

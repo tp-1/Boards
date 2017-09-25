@@ -1,5 +1,6 @@
 package com.example.i5.boards.ui.newItem;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -161,6 +162,7 @@ public class NewIssueActivity extends NewItemActivity {
      * Sorry for the inconsistent code, future me O:)
      * Starts the {@link NewBoardActivity} so user can create a new board
      */
+    @SuppressWarnings("UnusedParameters")
     public void createNewBoard(View view) {
         ALog.d(TAG, ALog.UI, "Starting NewBoardActivity");
         // TODO: 15-Jul-17 startActivityForResult
@@ -172,6 +174,7 @@ public class NewIssueActivity extends NewItemActivity {
      * Handles the onClick event of the add Story button
      * Starts the {@link NewStoryActivity} so user can create a new story
      */
+    @SuppressWarnings("UnusedParameters")
     public void createNewStory(View view) {
         ALog.d(TAG, ALog.UI, "Starting NewStoryActivity");
         // TODO: 15-Jul-17 startActivityForResult
