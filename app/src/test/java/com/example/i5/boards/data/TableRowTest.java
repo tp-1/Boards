@@ -1,17 +1,17 @@
 package com.example.i5.boards.data;
 
+import com.example.i5.boards.Assumes;
 import com.example.i5.boards.BuildConfig;
+import com.example.i5.boards.data.db.DBOperationsTest;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-/**
- * [PREREQUISITES] {@link com.example.i5.boards.data.db.DBOperationsTest} <br/>
- */
 @RunWith(RobolectricTestRunner.class)
 @Config(constants = BuildConfig.class)
+@Assumes(DBOperationsTest.class)
 public abstract class TableRowTest {
     @Test
     public abstract void should_HaveCorrectFields_When_RestoreFromCursor();

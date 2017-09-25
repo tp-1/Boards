@@ -20,7 +20,6 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 
 /**
- * [PREREQUISITES] {@link DBHelperTest} <br/>
  * Consists of {@link DBOperationsWithSetupTest} and {@link DBOperationsWithoutSetupTest}.
  * If setup isn't performed only thing that needs to be checked is that operations fail immediately
  * If setup is performed, {@link DBOperations} is technically just a layer

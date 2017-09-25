@@ -1,6 +1,7 @@
 package com.example.i5.boards.data;
 
 import android.database.Cursor;
+import android.support.annotation.WorkerThread;
 
 import com.example.i5.boards.ALog;
 import com.example.i5.boards.data.db.DBOperations;
@@ -18,6 +19,7 @@ abstract class TableRow {
     /**
      * Saves this row to db. Uses {@link DBOperations}
      */
+    @WorkerThread
     abstract public void save();
 
     /**

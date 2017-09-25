@@ -2,6 +2,7 @@ package com.example.i5.boards.data;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.support.annotation.WorkerThread;
 
 import com.example.i5.boards.ALog;
 import com.example.i5.boards.data.db.DBOperations;
@@ -79,6 +80,7 @@ public class Issue extends TableRow {
      * Pretending to override from superclass. Trust me - I know what I'm doing.
      * @return Cursor over all rows from the issue table
      */
+    @WorkerThread
     static public Cursor getAll() {
         return DBOperations.query(TableInfos.IssueTable.NAME);
     }

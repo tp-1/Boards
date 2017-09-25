@@ -3,6 +3,7 @@ package com.example.i5.boards.data;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.support.annotation.Nullable;
+import android.support.annotation.WorkerThread;
 
 import com.example.i5.boards.ALog;
 import com.example.i5.boards.data.db.DBOperations;
@@ -66,7 +67,7 @@ public class Story extends TableRow {
      * <br/>
      * <b>NOTE: database access</b>
      */
-    // TODO: 09-Jul-17 add annotation for db access?
+    @WorkerThread
     @Nullable
     public static Story restoreFromId(long id) {
         Cursor c = DBOperations.query(TableInfos.StoryTable.NAME, id);
@@ -85,6 +86,7 @@ public class Story extends TableRow {
      * Pretending to override from superclass. Trust me - I know what I'm doing.
      * @return Cursor over all rows from the story table
      */
+    @WorkerThread
     static public Cursor getAll() {
         return DBOperations.query(TableInfos.StoryTable.NAME);
     }
@@ -113,6 +115,7 @@ public class Story extends TableRow {
      * {@value com.example.i5.boards.data.db.TableInfos.IssueTable.ColumnNames#STORY_KEY}
      *  = {@link #id}
      */
+    @WorkerThread
     public Cursor getIssues() {
         String selection = TableInfos.IssueTable.ColumnNames.STORY_KEY + " = ?";
         String[] selectionArgs = new String[]{Long.toString(id)};
@@ -125,6 +128,7 @@ public class Story extends TableRow {
      * {@link com.example.i5.boards.data.db.TableInfos.IssueTable.ColumnNames#BOARD_KEY}
      * matches the given boardId
      */
+    @WorkerThread
     public Cursor getIssuesFromBoard(long boardId) {
         ALog.d(TAG, ALog.DATA, "Getting all issues from a story " + id + " on board " + boardId);
 

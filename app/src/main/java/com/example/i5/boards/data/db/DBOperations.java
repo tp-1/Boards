@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.RestrictTo;
 import android.support.annotation.VisibleForTesting;
+import android.support.annotation.WorkerThread;
 
 import com.example.i5.boards.ALog;
 
@@ -42,6 +43,7 @@ public class DBOperations {
      * Create and/or open a database that will be used for reading and writing.
      * @see DBHelper#getWritableDatabase()
      */
+    @WorkerThread
     private static SQLiteDatabase getDatabase() {
         if (sDbHelper == null) {
             throw new IllegalStateException("Trying to get database, " +
@@ -58,6 +60,7 @@ public class DBOperations {
      * Arguments default to {@code null}
      * @see #query(String, String[], String, String[])
      */
+    @WorkerThread
     public static Cursor query(String tableName) {
         return query(tableName, null, null, null);
     }
@@ -65,6 +68,7 @@ public class DBOperations {
     /**
      * Find the row with given id in a table with the given name
      */
+    @WorkerThread
     public static Cursor query(String tableName, long id) {
         // FIXME: 10-Jul-17 omg, you have an inner class called ColumnNamesUniversal
         String selection = TableInfos.ColumnNamesUniversal.ID + " = ?";
@@ -75,6 +79,7 @@ public class DBOperations {
     /**
      * Query the given table, returning a Cursor over the result set.
      */
+    @WorkerThread
     public static Cursor query(String tableName, String[] projection, String selection, String[] args) {
         ALog.d(TAG, ALog.DATA, "Querying database, table " + tableName);
         // FIXME: 15-Jul-17 Arrays.toString() called for every query!
@@ -90,6 +95,7 @@ public class DBOperations {
      * @param cv Content values to save to the db
      * @return the row ID of the newly inserted row, or -1 if an error occurred
      */
+    @WorkerThread
     public static long save(String tableName, ContentValues cv) {
         ALog.d(TAG, ALog.DATA, "Saving values to database, table " + tableName);
         ALog.v(TAG, ALog.DATA, "Table = %s\nValues = %s", tableName, cv);
