@@ -13,14 +13,14 @@ import com.example.i5.boards.data.Story;
 import com.example.i5.boards.data.db.DBOperations;
 
 /**
- * Fragment for managing the selected Board with list of it's stories and issues.
+ * Fragment for managing the selected Board with list of its stories and issues.
  * Board is drawn like this:
  * <ul>
  *     <li>Board name in the action bar</li>
  *     <li>List of stories ({@link StoryOnBoard}) in a ListView</li>
  *     <ul>
- *         <li>Every story inflates it's issues ({@link IssueOnBoard}),
- *         putting them in it's status columns</li>
+ *         <li>Every story inflates its issues ({@link IssueOnBoard}),
+ *         putting them in its status columns</li>
  *     </ul>
  *     <li>Board is redrawn when user adds another issue</li>
  * </ul>

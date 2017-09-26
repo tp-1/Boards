@@ -9,7 +9,7 @@ import android.util.Log;
  *
  * <h1>Filters</h1>
  * Pass bits representing wanted filters when logging a message.
- * In debug screen (to be updated), choose which filters should be displayed.
+ * In debug screen, choose which filters should be displayed.
  *
  * TODO file logging
  *
@@ -58,13 +58,6 @@ public class ALog {
      */
     public static boolean isFilterEnabled(int filter) {
         return (mFilter & filter) != 0;
-    }
-
-    /**
-     * @return All currently enabled filters
-     */
-    public static int getFilter() {
-        return mFilter;
     }
 
     public static void v(String tag, String s, Object... args) {

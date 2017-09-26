@@ -23,6 +23,7 @@ public class DBOperations {
 
     /**
      * Create or save {@link DBHelper} instance to be used by operations performed with this class.
+     * Can be called from UI thread.
      * @param context Context used to create database. Will be used to fetch an application context
      */
     public static void setupDatabase(Context context) {

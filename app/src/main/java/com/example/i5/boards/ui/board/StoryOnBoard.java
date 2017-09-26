@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
  /**
  * UI representation of {@link Story} object on a Board screen.
- * This class does not mirror it's the {@link Story} member,
+ * This class does not mirror its {@link Story} member,
  * because it only represents part of the story that belongs
  * to the selected board ({@link #mBoardId})
  */

@@ -15,7 +15,7 @@ import com.example.i5.boards.R;
 import com.example.i5.boards.ui.newItem.NewIssueActivity;
 
 /**
- * Activity for managing the selected Board with list of it's stories and issues.
+ * Activity for managing the selected Board with list of its stories and issues.
  * UI is managed by {@link BoardFragment}
  * Contains:
  * <ul>
